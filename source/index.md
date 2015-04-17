@@ -6,8 +6,7 @@ language_tabs:
   - ruby
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a>
+  - <a href='https://jobhuk.com/partner/signup'>Sign Up for a Developer Key</a>  
 
 includes:
   - errors
@@ -19,9 +18,7 @@ search: true
 
 Welcome to the Jobhuk API! You can use our API to access Jobhuk API endpoints, you publish your jobs in our website and get candidates.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](http://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+We have language bindings in Shell and Ruby! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
 # Authentication
 
@@ -30,36 +27,35 @@ This example API documentation page was created with [Slate](http://github.com/t
 ```ruby
 require 'kittn'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+api = Jobhuk::APIClient.authorize!('meowmeowmeow')
 ```
 
 
 ```shell
 # With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+curl -H 'Token: <API_TOKEN>' -X POST -d  http://jobhuk.com/api/v1/company.json
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+> Make sure to replace `API_TOKEN` with your API key.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+Jobhuk uses API keys to allow access to the API. You can register a new Jobhuk API key at our [Partner Portal](https://jobhuk.com/partner/signup).
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+Jobhuk expects for the API_TOKEN to be included in all API requests to the server in a header that looks like the following:
 
-`Authorization: meowmeowmeow`
+`Token: API_TOKEN`
 
 <aside class="notice">
-You must replace `meowmeowmeow` with your personal API key.
+You must replace `API_TOKEN` with your personal API key.
 </aside>
 
-# Kittens
+# Companies
 
 ## Get All Kittens
 
 ```ruby
 require 'kittn'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+api = Jobhuk::APIClient.authorize!('meowmeowmeow')
 api.kittens.get
 ```
 
@@ -111,7 +107,7 @@ Remember — a happy kitten is an authenticated kitten!
 ```ruby
 require 'kittn'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+api = Jobhuk::APIClient.authorize!('meowmeowmeow')
 api.kittens.get(2)
 ```
 
@@ -146,3 +142,6 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the cat to retrieve
 
+# Jobs
+
+# Candidates
