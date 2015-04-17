@@ -133,10 +133,10 @@ You must replace `API_TOKEN` with your personal API key.
 <h2 id="create-company">Create Company</h2>
 <pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'httparty'</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="s2">"http://whosflying.com/api/v1/company.json"</span><span class="p">,</span> <span class="p">{</span> <span class="ss">body: </span><span class="p">{</span><span class="ss">company: </span><span class="p">{</span><span class="ss">name: </span><span class="s2">"jobhuk"</span><span class="p">,</span> <span class="ss">website: </span><span class="s2">"http://jobhuk.com"</span><span class="p">,</span> <span class="ss">phone: </span><span class="mi">8558558359</span><span class="p">,</span> <span class="ss">company_type: </span><span class="s2">"staffing"</span><span class="p">}},</span> <span class="ss">headers: </span><span class="p">{</span><span class="s2">"Token"</span> <span class="o">=&gt;</span> <span class="s2">"API_TOKEN"</span><span class="p">}</span> <span class="p">})</span>
+<span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="s2">"http://jobhuk.com/api/v1/company.json"</span><span class="p">,</span> <span class="p">{</span> <span class="ss">body: </span><span class="p">{</span><span class="ss">company: </span><span class="p">{</span><span class="ss">name: </span><span class="s2">"jobhuk"</span><span class="p">,</span> <span class="ss">website: </span><span class="s2">"http://jobhuk.com"</span><span class="p">,</span> <span class="ss">phone: </span><span class="mi">8558558359</span><span class="p">,</span> <span class="ss">company_type: </span><span class="s2">"staffing"</span><span class="p">}},</span> <span class="ss">headers: </span><span class="p">{</span><span class="s2">"Token"</span> <span class="o">=&gt;</span> <span class="s2">"API_TOKEN"</span><span class="p">}</span> <span class="p">})</span>
 <span class="n">company</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
 </code></pre>
-<pre><code class="highlight shell">curl <span class="s2">"http://whosflying.com/api/v1/company.json"</span> 
+<pre><code class="highlight shell">curl <span class="s2">"http://jobhuk.com/api/v1/company.json"</span> 
   -X POST 
   -H <span class="s2">"Token:TW6SV34JL+M/WaVMY0tytrII2PJ1xAjSkV73qq2Gmzgv+8q0zSeIhijCLVSc9eSEb9jjuug/8ZtucVSacMFgeA=="</span>
   --data <span class="s2">"company[name]=test110&amp;company[website]=test110.com&amp;company[phone]=1234567890"</span> 
@@ -338,10 +338,10 @@ You must replace `API_TOKEN` with your personal API key.
 <h2 id="edit-company">Edit Company</h2>
 <pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'httparty'</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="s2">"http://whosflying.com/api/v1/company/2.json"</span><span class="p">,</span> <span class="p">{</span> <span class="ss">body: </span><span class="p">{</span><span class="ss">company: </span><span class="p">{</span><span class="ss">name: </span><span class="s2">"jobhuk"</span><span class="p">,</span> <span class="ss">website: </span><span class="s2">"http://jobhuk.com"</span><span class="p">,</span> <span class="ss">phone: </span><span class="mi">8558558359</span><span class="p">,</span> <span class="ss">company_type: </span><span class="s2">"staffing"</span><span class="p">}},</span> <span class="ss">headers: </span><span class="p">{</span><span class="s2">"Token"</span> <span class="o">=&gt;</span> <span class="s2">"API_TOKEN"</span><span class="p">}</span> <span class="p">})</span>
+<span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="s2">"http://jobhuk.com/api/v1/company/2.json"</span><span class="p">,</span> <span class="p">{</span> <span class="ss">body: </span><span class="p">{</span><span class="ss">company: </span><span class="p">{</span><span class="ss">name: </span><span class="s2">"jobhuk"</span><span class="p">,</span> <span class="ss">website: </span><span class="s2">"http://jobhuk.com"</span><span class="p">,</span> <span class="ss">phone: </span><span class="mi">8558558359</span><span class="p">,</span> <span class="ss">company_type: </span><span class="s2">"staffing"</span><span class="p">}},</span> <span class="ss">headers: </span><span class="p">{</span><span class="s2">"Token"</span> <span class="o">=&gt;</span> <span class="s2">"API_TOKEN"</span><span class="p">}</span> <span class="p">})</span>
 <span class="n">company</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
 </code></pre>
-<pre><code class="highlight shell">curl <span class="s2">"http://whosflying.com/api/v1/company/2.json"</span> 
+<pre><code class="highlight shell">curl <span class="s2">"http://jobhuk.com/api/v1/company/2.json"</span> 
   -X POST 
   -H <span class="s2">"Token:TW6SV34JL+M/WaVMY0tytrII2PJ1xAjSkV73qq2Gmzgv+8q0zSeIhijCLVSc9eSEb9jjuug/8ZtucVSacMFgeA=="</span>
   --data <span class="s2">"company[name]=test110&amp;company[website]=test110.com&amp;company[phone]=1234567890"</span> 
@@ -492,8 +492,6 @@ You must replace `API_TOKEN` with your personal API key.
 <h1 id="candidates">Candidates</h1>
 
           <h1 id="errors">Errors</h1>
-
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
 
 <p>The Jobhuk API uses the following error codes:</p>
 
