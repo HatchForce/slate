@@ -307,4 +307,82 @@ company[about_benefits]<br>optional | string | information about company benefit
 
 # Jobs
 
+## All Jobs
+
+```ruby
+require 'httparty'
+
+response = HTTParty.get("http://jobhuk.com/api/v1/jobs.json", headers: {"Token" => "API_TOKEN"} })
+company = response.body
+```
+
+```shell
+curl "http://jobhuk.com/api/v1/company/2.json" 
+  -X POST 
+  -H "Token:TW6SV34JL+M/WaVMY0tytrII2PJ1xAjSkV73qq2Gmzgv+8q0zSeIhijCLVSc9eSEb9jjuug/8ZtucVSacMFgeA=="
+  --data "company[name]=test110&company[website]=test110.com&company[phone]=1234567890" 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id":2,
+  "name":"jobhuk",
+  "address":"610 Brazos St. Suite 300D Austin TX 78701",
+  "website":"http://jobhuk.com",
+  "phone":"+1 (855)-855-8359",
+  "fax":"+1 (855)-855-8359",
+  "city":"Austin",
+  "state":"TX",
+  "zip":"78701",
+  "created_at":"2015-04-16T04:59:14-05:00",
+  "image":"https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1089/jobhuk_logo_stacked_600r.jpg",
+  "founded":"2014",
+  "about":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
+  "description":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
+  "social_profile_links":["https://www.facebook.com/Jobhuk", "https://www.linkedin.com/company/jobhuk"],
+  "email":"contact@jobhuk.com",
+  "about_team":"",
+  "tag_line":"recruitment marketplace",
+  "about_benefits":"",
+  "relation_type":"staffing",
+  "verified":"true"
+}
+```
+
+This endpoint gets all jobs posted in jobhuk.
+
+### HTTP Request
+
+`GET http://jobhuk.com/api/v1/jobs.json`
+
+## My Jobs
+
+This endpoint get list of jobs posted by you in jobhuk
+
+### HTTP Request
+
+`GET http://jobhuk.com/api/v1/my_jobs.json`
+
+## Create Job
+
+This endpoint post as job in jobhuk
+
+### HTTP Request
+
+`POST http://jobhuk.com/api/v1/jobs.json`
+
+## Get Job
+
+This endpoint get a job details by id
+
+### HTTP Request
+
+`POST http://jobhuk.com/api/v1/jobs/<id>.json`
+
+## Edit Job
+
+This endpoint edit a job details by id post
+
 # Candidates
