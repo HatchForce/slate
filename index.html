@@ -53,14 +53,15 @@
 <h1 id="authentication">Authentication</h1>
 
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>To authorize endpoint urls, example:</p>
 </blockquote>
-<pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'kittn'</span>
+<pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'httparty'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Jobhuk</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'http://jobhuk.com/api/v1/companies.json'</span><span class="p">,</span> <span class="ss">headers: </span><span class="p">{</span><span class="s2">"Token"</span> <span class="o">=&gt;</span> <span class="s2">"API_TOKEN"</span><span class="p">})</span>
+<span class="n">companies</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
 </code></pre>
-<pre><code class="highlight shell"><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl -H <span class="s1">'Token: &lt;API_TOKEN&gt;'</span> -X POST -d  http://jobhuk.com/api/v1/company.json
+<pre><code class="highlight shell">curl <span class="s2">"http://jobhuk.com/api/v1/companies.json"</span>
+  -H <span class="s2">"Token: API_TOKEN"</span>  
 </code></pre>
 
 <blockquote>
@@ -79,14 +80,14 @@ You must replace `API_TOKEN` with your personal API key.
 
 <h1 id="companies">Companies</h1>
 
-<h2 id="get-all-kittens">Get All Kittens</h2>
-<pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h2 id="list-of-companies">List of Companies</h2>
+<pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'httparty'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Jobhuk</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
+<span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'http://jobhuk.com/api/v1/companies.json'</span><span class="p">,</span> <span class="ss">headers: </span><span class="p">{</span><span class="s2">"Token"</span> <span class="o">=&gt;</span> <span class="s2">"API_TOKEN"</span><span class="p">})</span>
+<span class="n">companies</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
 </code></pre>
-<pre><code class="highlight shell">curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+<pre><code class="highlight shell">curl <span class="s2">"http://jobhuk.com/api/v1/companies.json"</span>
+  -H <span class="s2">"Token: API_TOKEN"</span>  
 </code></pre>
 
 <blockquote>
@@ -94,82 +95,231 @@ You must replace `API_TOKEN` with your personal API key.
 </blockquote>
 <pre><code class="highlight json"><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"jobhuk"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"610 Brazos St. Suite 300D Austin TX 78701"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"website"</span><span class="p">:</span><span class="s2">"http://jobhuk.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone"</span><span class="p">:</span><span class="s2">"+1 (855)-855-8359"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fax"</span><span class="p">:</span><span class="s2">"+1 (855)-855-8359"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Austin"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"TX"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"zip"</span><span class="p">:</span><span class="s2">"78701"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2015-04-16T04:59:14-05:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"image"</span><span class="p">:</span><span class="s2">"https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1089/jobhuk_logo_stacked_600r.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"founded"</span><span class="p">:</span><span class="s2">"2014"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"about"</span><span class="p">:</span><span class="s2">"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"social_profile_links"</span><span class="p">:[</span><span class="s2">"https://www.facebook.com/Jobhuk"</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://www.linkedin.com/company/jobhuk"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"contact@jobhuk.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"about_team"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tag_line"</span><span class="p">:</span><span class="s2">"recruitment marketplace"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"about_benefits"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"relation_type"</span><span class="p">:</span><span class="s2">"staffing"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"verified"</span><span class="p">:</span><span class="s2">"true"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Isis"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Some Company"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves all kittens.</p>
+<p>This endpoint retrieves list of companies created by you.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/kittens</code></p>
+<p><code class="prettyprint">GET http://jobhuk.com/api/v1/companies</code></p>
 
-<h3 id="query-parameters">Query Parameters</h3>
+<h2 id="create-company">Create Company</h2>
+<pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'httparty'</span>
 
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-<h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
-<pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Jobhuk</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="s2">"http://whosflying.com/api/v1/company.json"</span><span class="p">,</span> <span class="p">{</span> <span class="ss">body: </span><span class="p">{</span><span class="ss">company: </span><span class="p">{</span><span class="ss">name: </span><span class="s2">"jobhuk"</span><span class="p">,</span> <span class="ss">website: </span><span class="s2">"http://jobhuk.com"</span><span class="p">,</span> <span class="ss">phone: </span><span class="mi">8558558359</span><span class="p">,</span> <span class="ss">company_type: </span><span class="s2">"staffing"</span><span class="p">}},</span> <span class="ss">headers: </span><span class="p">{</span><span class="s2">"Token"</span> <span class="o">=&gt;</span> <span class="s2">"API_TOKEN"</span><span class="p">}</span> <span class="p">})</span>
+<span class="n">company</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
 </code></pre>
-<pre><code class="highlight shell">curl <span class="s2">"http://example.com/api/kittens/3"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+<pre><code class="highlight shell">curl <span class="s2">"http://whosflying.com/api/v1/company.json"</span> 
+  -X POST 
+  -H <span class="s2">"Token:TW6SV34JL+M/WaVMY0tytrII2PJ1xAjSkV73qq2Gmzgv+8q0zSeIhijCLVSc9eSEb9jjuug/8ZtucVSacMFgeA=="</span>
+  --data <span class="s2">"company[name]=test110&amp;company[website]=test110.com&amp;company[phone]=1234567890"</span> 
 </code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre><code class="highlight json"><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Isis"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"jobhuk"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"610 Brazos St. Suite 300D Austin TX 78701"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"website"</span><span class="p">:</span><span class="s2">"http://jobhuk.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phone"</span><span class="p">:</span><span class="s2">"+1 (855)-855-8359"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fax"</span><span class="p">:</span><span class="s2">"+1 (855)-855-8359"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Austin"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"TX"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"zip"</span><span class="p">:</span><span class="s2">"78701"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2015-04-16T04:59:14-05:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"image"</span><span class="p">:</span><span class="s2">"https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1089/jobhuk_logo_stacked_600r.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"founded"</span><span class="p">:</span><span class="s2">"2014"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"about"</span><span class="p">:</span><span class="s2">"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"social_profile_links"</span><span class="p">:[</span><span class="s2">"https://www.facebook.com/Jobhuk"</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://www.linkedin.com/company/jobhuk"</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"contact@jobhuk.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"about_team"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tag_line"</span><span class="p">:</span><span class="s2">"recruitment marketplace"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"about_benefits"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"relation_type"</span><span class="p">:</span><span class="s2">"staffing"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"verified"</span><span class="p">:</span><span class="s2">"true"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">If you&rsquo;re not using an administrator API key, note that some kittens will return 403 Forbidden if they are hidden for admins only.</aside>
+<p>This endpoint creates a company in jobhuk.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">POST http://jobhuk.com/api/v1/company.json</code></p>
+
+<h3 id="post-parameters">POST Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>company<br>required</td>
+<td>hash</td>
+<td>company fields hash</td>
+</tr>
+<tr>
+<td>company[name]<br>required</td>
+<td>string</td>
+<td>company name</td>
+</tr>
+<tr>
+<td>company[website]<br>required</td>
+<td>string</td>
+<td>official website of the company</td>
+</tr>
+<tr>
+<td>company[phone]<br>required</td>
+<td>integer</td>
+<td>contact phone number</td>
+</tr>
+<tr>
+<td>company[company_type]<br>required</td>
+<td>string</td>
+<td>Type of the company. <br>Must be one of staffing, employer, partner.</td>
+</tr>
+<tr>
+<td>company[tag_line]<br>optional</td>
+<td>string</td>
+<td>company tag line</td>
+</tr>
+<tr>
+<td>company[email]<br>optional</td>
+<td>string</td>
+<td>contact email address</td>
+</tr>
+<tr>
+<td>company[address]<br>optional</td>
+<td>string</td>
+<td>company address</td>
+</tr>
+<tr>
+<td>company[fax]<br>optional</td>
+<td>string</td>
+<td>company fax number</td>
+</tr>
+<tr>
+<td>company[city]<br>optional</td>
+<td>string</td>
+<td>city</td>
+</tr>
+<tr>
+<td>company[state]<br>optional</td>
+<td>string</td>
+<td>state</td>
+</tr>
+<tr>
+<td>company[zip]<br>optional</td>
+<td>string</td>
+<td>zip code</td>
+</tr>
+<tr>
+<td>company[logo]<br>optional</td>
+<td>string</td>
+<td>company logo url</td>
+</tr>
+<tr>
+<td>company[year_founded]<br>optional</td>
+<td>integer</td>
+<td>company founded year</td>
+</tr>
+<tr>
+<td>company[short_description]<br>optional</td>
+<td>string</td>
+<td>company short description</td>
+</tr>
+<tr>
+<td>company[long_description]<br>optional</td>
+<td>string</td>
+<td>company long description</td>
+</tr>
+<tr>
+<td>company[about_team]<br>optional</td>
+<td>string</td>
+<td>information about company team</td>
+</tr>
+<tr>
+<td>company[about_benefits]<br>optional</td>
+<td>string</td>
+<td>information about company benefits</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-company">Get Company</h2>
+<pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'http://jobhuk.com/api/v1/company/2.json'</span><span class="p">,</span> <span class="ss">headers: </span><span class="p">{</span><span class="s2">"Token"</span> <span class="o">=&gt;</span> <span class="s2">"API_TOKEN"</span><span class="p">})</span>
+<span class="n">companies</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
+</code></pre>
+<pre><code class="highlight shell">curl <span class="s2">"http://jobhuk.com/api/v1/company/2.json"</span>
+  -H <span class="s2">"Token: API_TOKEN"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"jobhuk"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"610 Brazos St. Suite 300D Austin TX 78701"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"website"</span><span class="p">:</span><span class="s2">"http://jobhuk.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phone"</span><span class="p">:</span><span class="s2">"+1 (855)-855-8359"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fax"</span><span class="p">:</span><span class="s2">"+1 (855)-855-8359"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Austin"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"TX"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"zip"</span><span class="p">:</span><span class="s2">"78701"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2015-04-16T04:59:14-05:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"image"</span><span class="p">:</span><span class="s2">"https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1089/jobhuk_logo_stacked_600r.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"founded"</span><span class="p">:</span><span class="s2">"2014"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"about"</span><span class="p">:</span><span class="s2">"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"social_profile_links"</span><span class="p">:[</span><span class="s2">"https://www.facebook.com/Jobhuk"</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://www.linkedin.com/company/jobhuk"</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"contact@jobhuk.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"about_team"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tag_line"</span><span class="p">:</span><span class="s2">"recruitment marketplace"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"about_benefits"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"relation_type"</span><span class="p">:</span><span class="s2">"staffing"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"verified"</span><span class="p">:</span><span class="s2">"true"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a specific company information.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://jobhuk.com/api/v1/company/&lt;id&gt;.json</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -180,8 +330,160 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the cat to retrieve</td>
+<td>id</td>
+<td>The id of the company to retrieve</td>
+</tr>
+</tbody></table>
+
+<h2 id="edit-company">Edit Company</h2>
+<pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="s2">"http://whosflying.com/api/v1/company/2.json"</span><span class="p">,</span> <span class="p">{</span> <span class="ss">body: </span><span class="p">{</span><span class="ss">company: </span><span class="p">{</span><span class="ss">name: </span><span class="s2">"jobhuk"</span><span class="p">,</span> <span class="ss">website: </span><span class="s2">"http://jobhuk.com"</span><span class="p">,</span> <span class="ss">phone: </span><span class="mi">8558558359</span><span class="p">,</span> <span class="ss">company_type: </span><span class="s2">"staffing"</span><span class="p">}},</span> <span class="ss">headers: </span><span class="p">{</span><span class="s2">"Token"</span> <span class="o">=&gt;</span> <span class="s2">"API_TOKEN"</span><span class="p">}</span> <span class="p">})</span>
+<span class="n">company</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
+</code></pre>
+<pre><code class="highlight shell">curl <span class="s2">"http://whosflying.com/api/v1/company/2.json"</span> 
+  -X POST 
+  -H <span class="s2">"Token:TW6SV34JL+M/WaVMY0tytrII2PJ1xAjSkV73qq2Gmzgv+8q0zSeIhijCLVSc9eSEb9jjuug/8ZtucVSacMFgeA=="</span>
+  --data <span class="s2">"company[name]=test110&amp;company[website]=test110.com&amp;company[phone]=1234567890"</span> 
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"jobhuk"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"610 Brazos St. Suite 300D Austin TX 78701"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"website"</span><span class="p">:</span><span class="s2">"http://jobhuk.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phone"</span><span class="p">:</span><span class="s2">"+1 (855)-855-8359"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fax"</span><span class="p">:</span><span class="s2">"+1 (855)-855-8359"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Austin"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"TX"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"zip"</span><span class="p">:</span><span class="s2">"78701"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2015-04-16T04:59:14-05:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"image"</span><span class="p">:</span><span class="s2">"https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1089/jobhuk_logo_stacked_600r.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"founded"</span><span class="p">:</span><span class="s2">"2014"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"about"</span><span class="p">:</span><span class="s2">"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"social_profile_links"</span><span class="p">:[</span><span class="s2">"https://www.facebook.com/Jobhuk"</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://www.linkedin.com/company/jobhuk"</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"contact@jobhuk.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"about_team"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tag_line"</span><span class="p">:</span><span class="s2">"recruitment marketplace"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"about_benefits"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"relation_type"</span><span class="p">:</span><span class="s2">"staffing"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"verified"</span><span class="p">:</span><span class="s2">"true"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint updates specific company information given by id.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT http://jobhuk.com/api/v1/company/&lt;id&gt;.json</code></p>
+
+<h3 id="post-parameters">POST Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>jobhuk company id</td>
+</tr>
+<tr>
+<td>company<br>required</td>
+<td>hash</td>
+<td>company fields hash</td>
+</tr>
+<tr>
+<td>company[name]<br>required</td>
+<td>string</td>
+<td>company name</td>
+</tr>
+<tr>
+<td>company[website]<br>required</td>
+<td>string</td>
+<td>official website of the company</td>
+</tr>
+<tr>
+<td>company[phone]<br>required</td>
+<td>integer</td>
+<td>contact phone number</td>
+</tr>
+<tr>
+<td>company[company_type]<br>required</td>
+<td>string</td>
+<td>Type of the company. <br>Must be one of staffing, employer, partner.</td>
+</tr>
+<tr>
+<td>company[tag_line]<br>optional</td>
+<td>string</td>
+<td>company tag line</td>
+</tr>
+<tr>
+<td>company[email]<br>optional</td>
+<td>string</td>
+<td>contact email address</td>
+</tr>
+<tr>
+<td>company[address]<br>optional</td>
+<td>string</td>
+<td>company address</td>
+</tr>
+<tr>
+<td>company[fax]<br>optional</td>
+<td>string</td>
+<td>company fax number</td>
+</tr>
+<tr>
+<td>company[city]<br>optional</td>
+<td>string</td>
+<td>city</td>
+</tr>
+<tr>
+<td>company[state]<br>optional</td>
+<td>string</td>
+<td>state</td>
+</tr>
+<tr>
+<td>company[zip]<br>optional</td>
+<td>string</td>
+<td>zip code</td>
+</tr>
+<tr>
+<td>company[logo]<br>optional</td>
+<td>string</td>
+<td>company logo url</td>
+</tr>
+<tr>
+<td>company[year_founded]<br>optional</td>
+<td>integer</td>
+<td>company founded year</td>
+</tr>
+<tr>
+<td>company[short_description]<br>optional</td>
+<td>string</td>
+<td>company short description</td>
+</tr>
+<tr>
+<td>company[long_description]<br>optional</td>
+<td>string</td>
+<td>company long description</td>
+</tr>
+<tr>
+<td>company[about_team]<br>optional</td>
+<td>string</td>
+<td>information about company team</td>
+</tr>
+<tr>
+<td>company[about_benefits]<br>optional</td>
+<td>string</td>
+<td>information about company benefits</td>
 </tr>
 </tbody></table>
 
