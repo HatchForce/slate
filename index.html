@@ -489,6 +489,80 @@ You must replace `API_TOKEN` with your personal API key.
 
 <h1 id="jobs">Jobs</h1>
 
+<h2 id="all-jobs">All Jobs</h2>
+<pre><code class="highlight ruby"><span class="nb">require</span> <span class="s1">'httparty'</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">"http://jobhuk.com/api/v1/jobs.json"</span><span class="p">,</span> <span class="ss">headers: </span><span class="p">{</span><span class="s2">"Token"</span> <span class="o">=&gt;</span> <span class="s2">"API_TOKEN"</span><span class="p">}</span> <span class="p">})</span>
+<span class="n">company</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="nf">body</span>
+</code></pre>
+<pre><code class="highlight shell">curl <span class="s2">"http://jobhuk.com/api/v1/company/2.json"</span> 
+  -X POST 
+  -H <span class="s2">"Token:TW6SV34JL+M/WaVMY0tytrII2PJ1xAjSkV73qq2Gmzgv+8q0zSeIhijCLVSc9eSEb9jjuug/8ZtucVSacMFgeA=="</span>
+  --data <span class="s2">"company[name]=test110&amp;company[website]=test110.com&amp;company[phone]=1234567890"</span> 
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"jobhuk"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="s2">"610 Brazos St. Suite 300D Austin TX 78701"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"website"</span><span class="p">:</span><span class="s2">"http://jobhuk.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phone"</span><span class="p">:</span><span class="s2">"+1 (855)-855-8359"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fax"</span><span class="p">:</span><span class="s2">"+1 (855)-855-8359"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"city"</span><span class="p">:</span><span class="s2">"Austin"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"TX"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"zip"</span><span class="p">:</span><span class="s2">"78701"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2015-04-16T04:59:14-05:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"image"</span><span class="p">:</span><span class="s2">"https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1089/jobhuk_logo_stacked_600r.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"founded"</span><span class="p">:</span><span class="s2">"2014"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"about"</span><span class="p">:</span><span class="s2">"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="s2">"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"social_profile_links"</span><span class="p">:[</span><span class="s2">"https://www.facebook.com/Jobhuk"</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://www.linkedin.com/company/jobhuk"</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="s2">"contact@jobhuk.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"about_team"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"tag_line"</span><span class="p">:</span><span class="s2">"recruitment marketplace"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"about_benefits"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"relation_type"</span><span class="p">:</span><span class="s2">"staffing"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"verified"</span><span class="p">:</span><span class="s2">"true"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint gets all jobs posted in jobhuk.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://jobhuk.com/api/v1/jobs.json</code></p>
+
+<h2 id="my-jobs">My Jobs</h2>
+
+<p>This endpoint get list of jobs posted by you in jobhuk</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://jobhuk.com/api/v1/my_jobs.json</code></p>
+
+<h2 id="create-job">Create Job</h2>
+
+<p>This endpoint post as job in jobhuk</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://jobhuk.com/api/v1/jobs.json</code></p>
+
+<h2 id="get-job">Get Job</h2>
+
+<p>This endpoint get a job details by id</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://jobhuk.com/api/v1/jobs/&lt;id&gt;.json</code></p>
+
+<h2 id="edit-job">Edit Job</h2>
+
+<p>This endpoint edit a job details by id post</p>
+
 <h1 id="candidates">Candidates</h1>
 
           <h1 id="errors">Errors</h1>
