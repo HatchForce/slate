@@ -109,12 +109,12 @@ This endpoint retrieves list of companies created by you.
 ```ruby
 require 'httparty'
 
-response = HTTParty.post("http://whosflying.com/api/v1/company.json", { body: {company: {name: "jobhuk", website: "http://jobhuk.com", phone: 8558558359, company_type: "staffing"}}, headers: {"Token" => "API_TOKEN"} })
+response = HTTParty.post("http://jobhuk.com/api/v1/company.json", { body: {company: {name: "jobhuk", website: "http://jobhuk.com", phone: 8558558359, company_type: "staffing"}}, headers: {"Token" => "API_TOKEN"} })
 company = response.body
 ```
 
 ```shell
-curl "http://whosflying.com/api/v1/company.json" 
+curl "http://jobhuk.com/api/v1/company.json" 
   -X POST 
   -H "Token:TW6SV34JL+M/WaVMY0tytrII2PJ1xAjSkV73qq2Gmzgv+8q0zSeIhijCLVSc9eSEb9jjuug/8ZtucVSacMFgeA=="
   --data "company[name]=test110&company[website]=test110.com&company[phone]=1234567890" 
@@ -236,12 +236,12 @@ id | The id of the company to retrieve
 ```ruby
 require 'httparty'
 
-response = HTTParty.post("http://whosflying.com/api/v1/company/2.json", { body: {company: {name: "jobhuk", website: "http://jobhuk.com", phone: 8558558359, company_type: "staffing"}}, headers: {"Token" => "API_TOKEN"} })
+response = HTTParty.post("http://jobhuk.com/api/v1/company/2.json", { body: {company: {name: "jobhuk", website: "http://jobhuk.com", phone: 8558558359, company_type: "staffing"}}, headers: {"Token" => "API_TOKEN"} })
 company = response.body
 ```
 
 ```shell
-curl "http://whosflying.com/api/v1/company/2.json" 
+curl "http://jobhuk.com/api/v1/company/2.json" 
   -X POST 
   -H "Token:TW6SV34JL+M/WaVMY0tytrII2PJ1xAjSkV73qq2Gmzgv+8q0zSeIhijCLVSc9eSEb9jjuug/8ZtucVSacMFgeA=="
   --data "company[name]=test110&company[website]=test110.com&company[phone]=1234567890" 
