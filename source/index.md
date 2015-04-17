@@ -22,18 +22,18 @@ We have language bindings in Shell and Ruby! You can view code examples in the d
 
 # Authentication
 
-> To authorize, use this code:
+> To authorize endpoint urls, example:
 
 ```ruby
-require 'kittn'
+require 'httparty'
 
-api = Jobhuk::APIClient.authorize!('meowmeowmeow')
+response = HTTParty.get('http://jobhuk.com/api/v1/companies.json', headers: {"Token" => "API_TOKEN"})
+companies = response.body
 ```
 
-
 ```shell
-# With shell, you can just pass the correct header with each request
-curl -H 'Token: <API_TOKEN>' -X POST -d  http://jobhuk.com/api/v1/company.json
+curl "http://jobhuk.com/api/v1/companies.json"
+  -H "Token: API_TOKEN"  
 ```
 
 > Make sure to replace `API_TOKEN` with your API key.
@@ -48,20 +48,20 @@ Jobhuk expects for the API_TOKEN to be included in all API requests to the serve
 You must replace `API_TOKEN` with your personal API key.
 </aside>
 
-# Companies
+# Companies 
 
-## Get All Kittens
+## List of Companies
 
 ```ruby
-require 'kittn'
+require 'httparty'
 
-api = Jobhuk::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
+response = HTTParty.get('http://jobhuk.com/api/v1/companies.json', headers: {"Token" => "API_TOKEN"})
+companies = response.body
 ```
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+curl "http://jobhuk.com/api/v1/companies.json"
+  -H "Token: API_TOKEN"  
 ```
 
 > The above command returns JSON structured like this:
@@ -69,78 +69,241 @@ curl "http://example.com/api/kittens"
 ```json
 [
   {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
+    "id":2,
+    "name":"jobhuk",
+    "address":"610 Brazos St. Suite 300D Austin TX 78701",
+    "website":"http://jobhuk.com",
+    "phone":"+1 (855)-855-8359",
+    "fax":"+1 (855)-855-8359",
+    "city":"Austin",
+    "state":"TX",
+    "zip":"78701",
+    "created_at":"2015-04-16T04:59:14-05:00",
+    "image":"https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1089/jobhuk_logo_stacked_600r.jpg",
+    "founded":"2014",
+    "about":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
+    "description":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
+    "social_profile_links":["https://www.facebook.com/Jobhuk", "https://www.linkedin.com/company/jobhuk"],
+    "email":"contact@jobhuk.com",
+    "about_team":"",
+    "tag_line":"recruitment marketplace",
+    "about_benefits":"",
+    "relation_type":"staffing",
+    "verified":"true"
   },
   {
-    "id": 2,
-    "name": "Isis",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+    "id":3,
+    "name":"Some Company"
   }
 ]
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves list of companies created by you.
 
 ### HTTP Request
 
-`GET http://example.com/kittens`
+`GET http://jobhuk.com/api/v1/companies`
 
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
+## Create Company
 
 ```ruby
-require 'kittn'
+require 'httparty'
 
-api = Jobhuk::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
+response = HTTParty.post("http://whosflying.com/api/v1/company.json", { body: {company: {name: "jobhuk", website: "http://jobhuk.com", phone: 8558558359, company_type: "staffing"}}, headers: {"Token" => "API_TOKEN"} })
+company = response.body
 ```
 
 ```shell
-curl "http://example.com/api/kittens/3"
-  -H "Authorization: meowmeowmeow"
+curl "http://whosflying.com/api/v1/company.json" 
+  -X POST 
+  -H "Token:TW6SV34JL+M/WaVMY0tytrII2PJ1xAjSkV73qq2Gmzgv+8q0zSeIhijCLVSc9eSEb9jjuug/8ZtucVSacMFgeA=="
+  --data "company[name]=test110&company[website]=test110.com&company[phone]=1234567890" 
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "name": "Isis",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "id":2,
+  "name":"jobhuk",
+  "address":"610 Brazos St. Suite 300D Austin TX 78701",
+  "website":"http://jobhuk.com",
+  "phone":"+1 (855)-855-8359",
+  "fax":"+1 (855)-855-8359",
+  "city":"Austin",
+  "state":"TX",
+  "zip":"78701",
+  "created_at":"2015-04-16T04:59:14-05:00",
+  "image":"https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1089/jobhuk_logo_stacked_600r.jpg",
+  "founded":"2014",
+  "about":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
+  "description":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
+  "social_profile_links":["https://www.facebook.com/Jobhuk", "https://www.linkedin.com/company/jobhuk"],
+  "email":"contact@jobhuk.com",
+  "about_team":"",
+  "tag_line":"recruitment marketplace",
+  "about_benefits":"",
+  "relation_type":"staffing",
+  "verified":"true"
 }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">If you're not using an administrator API key, note that some kittens will return 403 Forbidden if they are hidden for admins only.</aside>
+This endpoint creates a company in jobhuk.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`POST http://jobhuk.com/api/v1/company.json`
+
+### POST Parameters
+
+Parameter | Value   | Description
+--------- | ------  | -----------
+company<br>required | hash | company fields hash
+company[name]<br>required | string | company name
+company[website]<br>required | string | official website of the company
+company[phone]<br>required | integer | contact phone number
+company[company_type]<br>required | string | Type of the company. <br>Must be one of staffing, employer, partner. 
+company[tag_line]<br>optional | string | company tag line
+company[email]<br>optional | string | contact email address
+company[address]<br>optional | string | company address
+company[fax]<br>optional | string | company fax number
+company[city]<br>optional | string | city
+company[state]<br>optional | string | state
+company[zip]<br>optional | string | zip code
+company[logo]<br>optional | string | company logo url
+company[year_founded]<br>optional | integer | company founded year
+company[short_description]<br>optional | string | company short description
+company[long_description]<br>optional | string | company long description
+company[about_team]<br>optional | string | information about company team
+company[about_benefits]<br>optional | string | information about company benefits
+
+## Get Company
+
+```ruby
+require 'httparty'
+
+response = HTTParty.get('http://jobhuk.com/api/v1/company/2.json', headers: {"Token" => "API_TOKEN"})
+companies = response.body
+```
+
+```shell
+curl "http://jobhuk.com/api/v1/company/2.json"
+  -H "Token: API_TOKEN"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id":2,
+  "name":"jobhuk",
+  "address":"610 Brazos St. Suite 300D Austin TX 78701",
+  "website":"http://jobhuk.com",
+  "phone":"+1 (855)-855-8359",
+  "fax":"+1 (855)-855-8359",
+  "city":"Austin",
+  "state":"TX",
+  "zip":"78701",
+  "created_at":"2015-04-16T04:59:14-05:00",
+  "image":"https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1089/jobhuk_logo_stacked_600r.jpg",
+  "founded":"2014",
+  "about":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
+  "description":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
+  "social_profile_links":["https://www.facebook.com/Jobhuk", "https://www.linkedin.com/company/jobhuk"],
+  "email":"contact@jobhuk.com",
+  "about_team":"",
+  "tag_line":"recruitment marketplace",
+  "about_benefits":"",
+  "relation_type":"staffing",
+  "verified":"true"
+}
+```
+
+This endpoint retrieves a specific company information.
+
+### HTTP Request
+
+`GET http://jobhuk.com/api/v1/company/<id>.json`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the cat to retrieve
+id | The id of the company to retrieve
+
+## Edit Company
+
+```ruby
+require 'httparty'
+
+response = HTTParty.post("http://whosflying.com/api/v1/company/2.json", { body: {company: {name: "jobhuk", website: "http://jobhuk.com", phone: 8558558359, company_type: "staffing"}}, headers: {"Token" => "API_TOKEN"} })
+company = response.body
+```
+
+```shell
+curl "http://whosflying.com/api/v1/company/2.json" 
+  -X POST 
+  -H "Token:TW6SV34JL+M/WaVMY0tytrII2PJ1xAjSkV73qq2Gmzgv+8q0zSeIhijCLVSc9eSEb9jjuug/8ZtucVSacMFgeA=="
+  --data "company[name]=test110&company[website]=test110.com&company[phone]=1234567890" 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id":2,
+  "name":"jobhuk",
+  "address":"610 Brazos St. Suite 300D Austin TX 78701",
+  "website":"http://jobhuk.com",
+  "phone":"+1 (855)-855-8359",
+  "fax":"+1 (855)-855-8359",
+  "city":"Austin",
+  "state":"TX",
+  "zip":"78701",
+  "created_at":"2015-04-16T04:59:14-05:00",
+  "image":"https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1089/jobhuk_logo_stacked_600r.jpg",
+  "founded":"2014",
+  "about":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
+  "description":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
+  "social_profile_links":["https://www.facebook.com/Jobhuk", "https://www.linkedin.com/company/jobhuk"],
+  "email":"contact@jobhuk.com",
+  "about_team":"",
+  "tag_line":"recruitment marketplace",
+  "about_benefits":"",
+  "relation_type":"staffing",
+  "verified":"true"
+}
+```
+
+This endpoint updates specific company information given by id.
+
+### HTTP Request
+
+`PUT http://jobhuk.com/api/v1/company/<id>.json`
+
+### POST Parameters
+
+Parameter | Value   | Description
+--------- | ------  | -----------
+id | integer | jobhuk company id 
+company<br>required | hash | company fields hash
+company[name]<br>required | string | company name
+company[website]<br>required | string | official website of the company
+company[phone]<br>required | integer | contact phone number
+company[company_type]<br>required | string | Type of the company. <br>Must be one of staffing, employer, partner. 
+company[tag_line]<br>optional | string | company tag line
+company[email]<br>optional | string | contact email address
+company[address]<br>optional | string | company address
+company[fax]<br>optional | string | company fax number
+company[city]<br>optional | string | city
+company[state]<br>optional | string | state
+company[zip]<br>optional | string | zip code
+company[logo]<br>optional | string | company logo url
+company[year_founded]<br>optional | integer | company founded year
+company[short_description]<br>optional | string | company short description
+company[long_description]<br>optional | string | company long description
+company[about_team]<br>optional | string | information about company team
+company[about_benefits]<br>optional | string | information about company benefits
 
 # Jobs
 
