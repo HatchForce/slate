@@ -67,35 +67,38 @@ curl "http://jobhuk.com/api/v1/companies.json"
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id":2,
-    "name":"jobhuk",
-    "address":"610 Brazos St. Suite 300D Austin TX 78701",
-    "website":"http://jobhuk.com",
-    "phone":"+1 (855)-855-8359",
-    "fax":"+1 (855)-855-8359",
-    "city":"Austin",
-    "state":"TX",
-    "zip":"78701",
-    "created_at":"2015-04-16T04:59:14-05:00",
-    "image":"https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1089/jobhuk_logo_stacked_600r.jpg",
-    "founded":"2014",
-    "about":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
-    "description":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
-    "social_profile_links":["https://www.facebook.com/Jobhuk", "https://www.linkedin.com/company/jobhuk"],
-    "email":"contact@jobhuk.com",
-    "about_team":"",
-    "tag_line":"recruitment marketplace",
-    "about_benefits":"",
-    "relation_type":"staffing",
-    "verified":"true"
-  },
-  {
-    "id":3,
-    "name":"Some Company"
-  }
-]
+{
+    "successful": true,
+    "count": 35,
+    "active_company_id": "314",
+    "companies": [{
+        "id":2,
+        "name":"jobhuk",
+        "address":"610 Brazos St. Suite 300D Austin TX 78701",
+        "website":"http://jobhuk.com",
+        "phone":"+1 (855)-855-8359",
+        "fax":"+1 (855)-855-8359",
+        "city":"Austin",
+        "state":"TX",
+        "zip":"78701",
+        "created_at":"2015-04-16T04:59:14-05:00",
+        "logo":"https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1089/jobhuk_logo_stacked_600r.jpg",
+        "founded":"2014",
+        "about":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
+        "description":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
+        "social_profile_links":["https://www.facebook.com/Jobhuk", "https://www.linkedin.com/company/jobhuk"],
+        "email":"contact@jobhuk.com",
+        "about_team":"",
+        "tag_line":"recruitment marketplace",
+        "about_benefits":"",
+        "company_type":"staffing",
+        "verified":"true"
+      }, {
+        "id":3,
+        "name":"Some Company"
+      }
+    ]
+}
 ```
 
 This endpoint retrieves list of companies created by you.
@@ -109,12 +112,12 @@ This endpoint retrieves list of companies created by you.
 ```ruby
 require 'httparty'
 
-response = HTTParty.post("http://jobhuk.com/api/v1/company.json", { body: {company: {name: "jobhuk", website: "http://jobhuk.com", phone: 8558558359, company_type: "staffing"}}, headers: {"Token" => "API_TOKEN"} })
+response = HTTParty.post("http://jobhuk.com/api/v1/companies.json", { body: {company: {name: "jobhuk", website: "http://jobhuk.com", phone: 8558558359, company_type: "staffing"}}, headers: {"Token" => "API_TOKEN"} })
 company = response.body
 ```
 
 ```shell
-curl "http://jobhuk.com/api/v1/company.json" 
+curl "http://jobhuk.com/api/v1/companies.json"
   -X POST 
   -H "Token:TW6SV34JL+M/WaVMY0tytrII2PJ1xAjSkV73qq2Gmzgv+8q0zSeIhijCLVSc9eSEb9jjuug/8ZtucVSacMFgeA=="
   --data "company[name]=test110&company[website]=test110.com&company[phone]=1234567890" 
@@ -124,27 +127,30 @@ curl "http://jobhuk.com/api/v1/company.json"
 
 ```json
 {
-  "id":2,
-  "name":"jobhuk",
-  "address":"610 Brazos St. Suite 300D Austin TX 78701",
-  "website":"http://jobhuk.com",
-  "phone":"+1 (855)-855-8359",
-  "fax":"+1 (855)-855-8359",
-  "city":"Austin",
-  "state":"TX",
-  "zip":"78701",
-  "created_at":"2015-04-16T04:59:14-05:00",
-  "image":"https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1089/jobhuk_logo_stacked_600r.jpg",
-  "founded":"2014",
-  "about":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
-  "description":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
-  "social_profile_links":["https://www.facebook.com/Jobhuk", "https://www.linkedin.com/company/jobhuk"],
-  "email":"contact@jobhuk.com",
-  "about_team":"",
-  "tag_line":"recruitment marketplace",
-  "about_benefits":"",
-  "relation_type":"staffing",
-  "verified":"true"
+    "successful": true,
+    "company":{
+    "id":2,
+    "name":"jobhuk",
+    "address":"610 Brazos St. Suite 300D Austin TX 78701",
+    "website":"http://jobhuk.com",
+    "phone":"+1 (855)-855-8359",
+    "fax":"+1 (855)-855-8359",
+    "city":"Austin",
+    "state":"TX",
+    "zip":"78701",
+    "created_at":"2015-04-16T04:59:14-05:00",
+    "logo":"https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1089/jobhuk_logo_stacked_600r.jpg",
+    "founded":"2014",
+    "about":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
+    "description":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
+    "social_profile_links":["https://www.facebook.com/Jobhuk", "https://www.linkedin.com/company/jobhuk"],
+    "email":"contact@jobhuk.com",
+    "about_team":"",
+    "tag_line":"recruitment marketplace",
+    "about_benefits":"",
+    "company_type":"staffing",
+    "verified":"true"
+    }
 }
 ```
 
@@ -152,7 +158,7 @@ This endpoint creates a company in jobhuk.
 
 ### HTTP Request
 
-`POST http://jobhuk.com/api/v1/company.json`
+`POST http://jobhuk.com/api/v1/companies.json`
 
 ### POST Parameters
 
@@ -182,12 +188,12 @@ company[about_benefits]<br>optional | string | information about company benefit
 ```ruby
 require 'httparty'
 
-response = HTTParty.get('http://jobhuk.com/api/v1/company/2.json', headers: {"Token" => "API_TOKEN"})
+response = HTTParty.get('http://jobhuk.com/api/v1/companies/2.json', headers: {"Token" => "API_TOKEN"})
 companies = response.body
 ```
 
 ```shell
-curl "http://jobhuk.com/api/v1/company/2.json"
+curl "http://jobhuk.com/api/v1/companies/2.json"
   -H "Token: API_TOKEN"
 ```
 
@@ -195,27 +201,30 @@ curl "http://jobhuk.com/api/v1/company/2.json"
 
 ```json
 {
-  "id":2,
-  "name":"jobhuk",
-  "address":"610 Brazos St. Suite 300D Austin TX 78701",
-  "website":"http://jobhuk.com",
-  "phone":"+1 (855)-855-8359",
-  "fax":"+1 (855)-855-8359",
-  "city":"Austin",
-  "state":"TX",
-  "zip":"78701",
-  "created_at":"2015-04-16T04:59:14-05:00",
-  "image":"https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1089/jobhuk_logo_stacked_600r.jpg",
-  "founded":"2014",
-  "about":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
-  "description":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
-  "social_profile_links":["https://www.facebook.com/Jobhuk", "https://www.linkedin.com/company/jobhuk"],
-  "email":"contact@jobhuk.com",
-  "about_team":"",
-  "tag_line":"recruitment marketplace",
-  "about_benefits":"",
-  "relation_type":"staffing",
-  "verified":"true"
+    "successful": true,
+    "company":{
+    "id":2,
+    "name":"jobhuk",
+    "address":"610 Brazos St. Suite 300D Austin TX 78701",
+    "website":"http://jobhuk.com",
+    "phone":"+1 (855)-855-8359",
+    "fax":"+1 (855)-855-8359",
+    "city":"Austin",
+    "state":"TX",
+    "zip":"78701",
+    "created_at":"2015-04-16T04:59:14-05:00",
+    "logo":"https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1089/jobhuk_logo_stacked_600r.jpg",
+    "founded":"2014",
+    "about":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
+    "description":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
+    "social_profile_links":["https://www.facebook.com/Jobhuk", "https://www.linkedin.com/company/jobhuk"],
+    "email":"contact@jobhuk.com",
+    "about_team":"",
+    "tag_line":"recruitment marketplace",
+    "about_benefits":"",
+    "company_type":"staffing",
+    "verified":"true"
+    }
 }
 ```
 
@@ -223,25 +232,25 @@ This endpoint retrieves a specific company information.
 
 ### HTTP Request
 
-`GET http://jobhuk.com/api/v1/company/<id>.json`
+`GET http://jobhuk.com/api/v1/companies/<id>.json`
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-id | The id of the company to retrieve
+Parameter | Value | Description
+--------- | ----- | -----
+id | integer | The id of the company to retrieve
 
 ## Edit Company
 
 ```ruby
 require 'httparty'
 
-response = HTTParty.post("http://jobhuk.com/api/v1/company/2.json", { body: {company: {name: "jobhuk", website: "http://jobhuk.com", phone: 8558558359, company_type: "staffing"}}, headers: {"Token" => "API_TOKEN"} })
+response = HTTParty.put("http://jobhuk.com/api/v1/companies/2.json", { body: {company: {name: "jobhuk", website: "http://jobhuk.com", phone: 8558558359, company_type: "staffing"}}, headers: {"Token" => "API_TOKEN"} })
 company = response.body
 ```
 
 ```shell
-curl "http://jobhuk.com/api/v1/company/2.json" 
+curl "http://jobhuk.com/api/v1/companies/2.json"
   -X POST 
   -H "Token:TW6SV34JL+M/WaVMY0tytrII2PJ1xAjSkV73qq2Gmzgv+8q0zSeIhijCLVSc9eSEb9jjuug/8ZtucVSacMFgeA=="
   --data "company[name]=test110&company[website]=test110.com&company[phone]=1234567890" 
@@ -261,7 +270,7 @@ curl "http://jobhuk.com/api/v1/company/2.json"
   "state":"TX",
   "zip":"78701",
   "created_at":"2015-04-16T04:59:14-05:00",
-  "image":"https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1089/jobhuk_logo_stacked_600r.jpg",
+  "logo":"https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1089/jobhuk_logo_stacked_600r.jpg",
   "founded":"2014",
   "about":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
   "description":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
@@ -270,7 +279,7 @@ curl "http://jobhuk.com/api/v1/company/2.json"
   "about_team":"",
   "tag_line":"recruitment marketplace",
   "about_benefits":"",
-  "relation_type":"staffing",
+  "company_type":"staffing",
   "verified":"true"
 }
 ```
@@ -279,7 +288,7 @@ This endpoint updates specific company information given by id.
 
 ### HTTP Request
 
-`PUT http://jobhuk.com/api/v1/company/<id>.json`
+`PUT http://jobhuk.com/api/v1/companies/<id>.json`
 
 ### POST Parameters
 
@@ -312,12 +321,12 @@ company[about_benefits]<br>optional | string | information about company benefit
 ```ruby
 require 'httparty'
 
-response = HTTParty.get("http://whosflying.com/api/v1/jobs.json", headers: {"Token" => "API_TOKEN"})
+response = HTTParty.get("http://jobhuk.com/api/v1/jobs.json", headers: {"Token" => "API_TOKEN"})
 jobs = response.body
 ```
 
 ```shell
-curl http://whosflying.com/api/v1/jobs.json 
+curl http://jobhuk.com/api/v1/jobs.json
   -H "Token: API_TOKEN"
 ```
 
@@ -355,18 +364,29 @@ curl http://whosflying.com/api/v1/jobs.json
       "hourly_rate":"50.0",
       "duration":8,
       "duration_type":"Weeks",
-      "skills":["Ruby on Rails", "MySQL"],
-      "company":{        
-        "year_founded":null,
-        "logo":"https://jobhuk.com/assets/company.png",
-        "company_type":"staffing",
-        "id":297,
-        "name":"r_api1",
-        "website":"r_api1.com",
-        "phone":"1231231231",
-        "tag_line":null,
-        "about_benefits":null,
-        "verified":true
+      "skills":"java, orcale",
+      "company": {
+          "short_description": "<p>Visa...</p>\r\n",
+          "long_description": "<p>s</p>\r\n",
+          "year_founded": "2013",
+          "logo": "https://jobhuk-staging.s3.amazonaws.com/uploads/company_images/company/image/23/Screen_Shot_2014-06-13_at_7.59.14_AM.png",
+          "company_type": null,
+          "id": 23,
+          "name": "Visa Inc11",
+          "address": "3500",
+          "website": "visa.com",
+          "phone": "(111) 111-1111",
+          "fax": null,
+          "city": "Austin",
+          "state": "Texas",
+          "zip": "78759",
+          "created_at": "2013-06-29T16:27:19-05:00",
+          "social_profile_links": null,
+          "email": null,
+          "about_team": "<p>s</p>\r\n",
+          "tag_line": "csssdsd",
+          "about_benefits": "<p>s</p>\r\n",
+          "verified": false
       }
     }, {
       "id":1115,
@@ -400,12 +420,12 @@ This endpoint get list of jobs approved by jobhuk admin and posted by you in job
 ```ruby
 require 'httparty'
 
-response = HTTParty.post("http://whosflying.com/api/v1/jobs.json", {body: {job: {company_id: 297, title: 'Senior Software Engineer', description: 'This is a senior software engineer position to support the software development for field portable analytical instruments...', location: 'Austin, TX', job_type: 'FullTime', comp_range: 5, compensation: 100000, finders_fee_type: 'percentage', finders_fee: 5, skills: 'Java, Oracle', industry: 'engineering'}}, headers: {"Token" => API_TOKEN}})
+response = HTTParty.post("http://jobhuk.com/api/v1/my_jobs.json", {body: {job: {company_id: 297, title: 'Senior Software Engineer', description: 'This is a senior software engineer position to support the software development for field portable analytical instruments...', location: 'Austin, TX', job_type: 'FullTime', comp_range: 5, compensation: 100000, finders_fee_type: 'percentage', finders_fee: 5, skills: 'Java, Oracle', industry: 'engineering'}}, headers: {"Token" => API_TOKEN}})
 job = response.body
 ```
 
 ```shell
-curl http://whosflying.com/api/v1/jobs.json
+curl http://jobhuk.com/api/v1/my_jobs.json
   -X POST
   -H "Token: API_TOKEN"
   --data "job[company_id]=297&job[title]=Senior Software Engineer&job[description]=This is a senior software engineer position to support the software development for field portable analytical instruments...&job[location]=Austin, TX&job[job_type]=FullTime&job[comp_range]=5&job[compensation]=100000&job[finders_fee_type]=percentage&job[finders_fee]=5&job[skills]=Java, Oracle&job[industry]=engineering"
@@ -445,15 +465,27 @@ curl http://whosflying.com/api/v1/jobs.json
     "duration_type":null,
     "skills":"Java, Oracle",
     "company": {
-      "year_founded":2014,
-      "logo":"https://jobhuk.com/assets/company.png",
-      "company_type":"staffing",
-      "id":2,
-      "name":"jobhuk",
-      "website":"jobhuk.com",
-      "phone":"1231231231",
-      "tag_line":null,
-      "verified":"true"
+      "short_description": "<p>Visa...</p>\r\n",
+      "long_description": "<p>s</p>\r\n",
+      "year_founded": "2013",
+      "logo": "https://jobhuk-staging.s3.amazonaws.com/uploads/company_images/company/image/23/Screen_Shot_2014-06-13_at_7.59.14_AM.png",
+      "company_type": null,
+      "id": 23,
+      "name": "Visa Inc11",
+      "address": "3500",
+      "website": "visa.com",
+      "phone": "(111) 111-1111",
+      "fax": null,
+      "city": "Austin",
+      "state": "Texas",
+      "zip": "78759",
+      "created_at": "2013-06-29T16:27:19-05:00",
+      "social_profile_links": null,
+      "email": null,
+      "about_team": "<p>s</p>\r\n",
+      "tag_line": "csssdsd",
+      "about_benefits": "<p>s</p>\r\n",
+      "verified": false
     }
   } 
 }
@@ -498,12 +530,12 @@ job[industry]<br>optional | string | job industry type
 ```ruby
 require 'httparty'
 
-response = HTTParty.get("http://whosflying.com/api/v1/jobs/1117.json", headers: {"Token" => "API_TOKEN"})
+response = HTTParty.get("http://jobhuk.com/api/v1/jobs/1117.json", headers: {"Token" => "API_TOKEN"})
 job = response.body
 ```
 
 ```shell
-curl http://whosflying.com/api/v1/jobs/1117.json 
+curl http://jobhuk.com/api/v1/jobs/1117.json
   -H "Token:API_TOKEN"
 ```
 
@@ -541,15 +573,27 @@ curl http://whosflying.com/api/v1/jobs/1117.json
     "duration_type":null,
     "skills":"Java, Oracle",
     "company": {
-      "year_founded":2014,
-      "logo":"https://jobhuk.com/assets/company.png",
-      "company_type":"staffing",
-      "id":2,
-      "name":"jobhuk",
-      "website":"jobhuk.com",
-      "phone":"1231231231",
-      "tag_line":null,
-      "verified":"true"
+      "short_description": "<p>Visa...</p>\r\n",
+      "long_description": "<p>s</p>\r\n",
+      "year_founded": "2013",
+      "logo": "https://jobhuk-staging.s3.amazonaws.com/uploads/company_images/company/image/23/Screen_Shot_2014-06-13_at_7.59.14_AM.png",
+      "company_type": null,
+      "id": 23,
+      "name": "Visa Inc11",
+      "address": "3500",
+      "website": "visa.com",
+      "phone": "(111) 111-1111",
+      "fax": null,
+      "city": "Austin",
+      "state": "Texas",
+      "zip": "78759",
+      "created_at": "2013-06-29T16:27:19-05:00",
+      "social_profile_links": null,
+      "email": null,
+      "about_team": "<p>s</p>\r\n",
+      "tag_line": "csssdsd",
+      "about_benefits": "<p>s</p>\r\n",
+      "verified": false
     }
   } 
 }
@@ -572,12 +616,12 @@ id<br>required | integer | unique job id
 ```ruby
 require 'httparty'
 
-response = HTTParty.put("http://whosflying.com/api/v1/jobs/1117.json", {body: {job: {company_id: 297, title: 'Senior Software Engineer', description: 'This is a senior software engineer position to support the software development for field portable analytical instruments...', location: 'Austin, TX', job_type: 'FullTime', comp_range: 5, compensation: 100000, finders_fee_type: 'percentage', finders_fee: 5, skills: 'Java, Oracle', industry: 'engineering'}}, headers: {"Token" => API_TOKEN}})
+response = HTTParty.put("http://jobhuk.com/api/v1/jobs/1117.json", {body: {job: {company_id: 297, title: 'Senior Software Engineer', description: 'This is a senior software engineer position to support the software development for field portable analytical instruments...', location: 'Austin, TX', job_type: 'FullTime', comp_range: 5, compensation: 100000, finders_fee_type: 'percentage', finders_fee: 5, skills: 'Java, Oracle', industry: 'engineering'}}, headers: {"Token" => API_TOKEN}})
 job = response.body
 ```
 
 ```shell
-curl http://whosflying.com/api/v1/jobs/1117.json
+curl http://jobhuk.com/api/v1/jobs/1117.json
   -X PUT
   -H "Token: API_TOKEN"
   --data "job[company_id]=297&job[title]=Senior Software Engineer&job[description]=This is a senior software engineer position to support the software development for field portable analytical instruments...&job[location]=Austin, TX&job[job_type]=FullTime&job[comp_range]=5&job[compensation]=100000&job[finders_fee_type]=percentage&job[finders_fee]=5&job[skills]=Java, Oracle&job[industry]=engineering"
@@ -617,15 +661,27 @@ curl http://whosflying.com/api/v1/jobs/1117.json
     "duration_type":null,
     "skills":"Java, Oracle",
     "company": {
-      "year_founded":2014,
-      "logo":"https://jobhuk.com/assets/company.png",
-      "company_type":"staffing",
-      "id":2,
-      "name":"jobhuk",
-      "website":"jobhuk.com",
-      "phone":"1231231231",
-      "tag_line":null,
-      "verified":"true"
+      "short_description": "<p>Visa...</p>\r\n",
+      "long_description": "<p>s</p>\r\n",
+      "year_founded": "2013",
+      "logo": "https://jobhuk-staging.s3.amazonaws.com/uploads/company_images/company/image/23/Screen_Shot_2014-06-13_at_7.59.14_AM.png",
+      "company_type": null,
+      "id": 23,
+      "name": "Visa Inc11",
+      "address": "3500",
+      "website": "visa.com",
+      "phone": "(111) 111-1111",
+      "fax": null,
+      "city": "Austin",
+      "state": "Texas",
+      "zip": "78759",
+      "created_at": "2013-06-29T16:27:19-05:00",
+      "social_profile_links": null,
+      "email": null,
+      "about_team": "<p>s</p>\r\n",
+      "tag_line": "csssdsd",
+      "about_benefits": "<p>s</p>\r\n",
+      "verified": false
     }
   } 
 }
@@ -671,11 +727,11 @@ job[industry]<br>optional | string | job industry type
 ```ruby
 require 'httparty'
 
-response = HTTParty.delete("http://whosflying.com/api/v1/jobs/1117.json", headers: {"Token" => "API_TOKEN"})
+response = HTTParty.delete("http://jobhuk.com/api/v1/jobs/1117.json", headers: {"Token" => "API_TOKEN"})
 ```
 
 ```shell
-curl http://whosflying.com/api/v1/jobs/1117.json
+curl http://jobhuk.com/api/v1/jobs/1117.json
   -X DELETE
   -H "Token: API_TOKEN"
   
@@ -685,7 +741,8 @@ curl http://whosflying.com/api/v1/jobs/1117.json
 
 ```json
 {
-  "successful":true      
+    "successful": true,
+    "job": "Deleted successfully 1124. This operation is irreversible."
 }
 ```
 
@@ -708,12 +765,12 @@ id<br>required | integer | unique job id
 ```ruby
 require 'httparty'
 
-response = HTTParty.post("http://whosflying.com/api/v1/jobs/1115/candidates", query: {candidate: {name: "john", email: "johnd@hatchforce.com", phone: 8558558359, public_profile_url: "https://www.linkedin.com/in/scottsantucci", :resume_file => File.new('/home/user/Downloads/josha_d.pdf')}},{headers:{"Token"=>"API_TOKEN"}})
+response = HTTParty.post("http://jobhuk.com/api/v1/jobs/1115/candidates", query: {candidate: {name: "john", email: "johnd@hatchforce.com", phone: 8558558359, public_profile_url: "https://www.linkedin.com/in/scottsantucci", :resume_file => File.new('/home/user/Downloads/josha_d.pdf')}},{headers:{"Token"=>"API_TOKEN"}})
 candidate = response.body
 ```
 
 ```shell
- curl "https/jobhuk.com/api/v1/jobs/1121/candidates" 
+ curl "https/jobhuk.com/api/v1/jobs/1121/candidates"
    -X POST 
    -H "Token: API_TOKEN"
    -F "candidate[name]=john" 
