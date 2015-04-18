@@ -6,7 +6,7 @@ language_tabs:
   - ruby
 
 toc_footers:
-  - <a href='https://jobhuk.com/partner/signup'>Sign Up for a Developer Key</a>  
+  - <a href='http://developer.jobhuk.com/api'>Sign Up for a Developer Key</a>  
 
 includes:
   - errors
@@ -815,7 +815,137 @@ candidate[resume_file]<br>required | string | candidate resume file
 candidate[public_profile_url]<br>required | string | candidate's linkedin or facebook profile urls
 
 ## All Candidates
+```ruby
+require 'httparty'
+
+response = HTTParty.get("http://jobhuk.com/api/v1/jobs/1117/candidates", headers: {"Token" => "API_TOKEN"})
+candidates = response.body
+```
+
+```shell
+curl http://jobhuk.com/api/v1/jobs/1117/candidates 
+  -H "Token:API_TOKEN"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{ 
+  "successful": true,
+  "submitted_users": [{
+    "submission_id": 13,
+    "job_id": 1117,
+    "submitter_name": "john",
+    "profile_image": "https://jobhuk.com/assets/profile.jpeg",
+    "referral_status": "hired",
+    "referral_tag": "shortlisted",
+    "discard_feedback": 0,
+    "candidate_rating": 3,
+    "referral_rating": 4,
+    "hire_feedback": "This is test feedback",
+    "resume": "http://jobhuk-dev.s3.amazonaws.com/uploads/resume/resume/resume_file/13/test.txt",
+    "interview_details": {},
+    "conversations_count": 1,
+    "verified": false,
+    "discarded_by": " "
+  }, {
+    "submission_id": 12,
+    "job_id": 1117,
+    "submitter_name": "V4@Startupsourcing.Com",
+    "profile_image": "https://jobhuk.com/assets/profile.jpeg",
+    "referral_status": "discarded",
+    "referral_tag": null,
+    "discard_feedback": 0,
+    "candidate_rating": 0,
+    "referral_rating": 0,
+    "hire_feedback": 0,
+    "resume": "http://jobhuk-dev.s3.amazonaws.com/uploads/resume/resume/resume_file/12/test.txt",
+    "interview_details": {},
+    "conversations_count": 0,
+    "verified": false,
+    "discarded_by": " "
+  }]
+}
+```
+
+This endpoint returns all candidates for this job.
+
+### HTTP Request
+
+`GET http://jobhuk.com/api/v1/jobs/<job_id>/candidates`
+
+### URL Parameters
+
+Parameter | Value   | Description
+--------- | ------  | -----------
+job_id<br>required | integer | unique job id
 
 ## Submitted Candidates
+
+```ruby
+require 'httparty'
+
+response = HTTParty.get("http://jobhuk.com/api/v1/jobs/1117/submitted_candidates", headers: {"Token" => "API_TOKEN"})
+candidates = response.body
+```
+
+```shell
+curl http://jobhuk.com/api/v1/jobs/1117/submitted_candidates 
+  -H "Token:API_TOKEN"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{ 
+  "successful": true,
+  "submitted_users": [{
+    "submission_id": 13,
+    "job_id": 1117,
+    "submitter_name": "john",
+    "profile_image": "https://jobhuk.com/assets/profile.jpeg",
+    "referral_status": "hired",
+    "referral_tag": "shortlisted",
+    "discard_feedback": 0,
+    "candidate_rating": 3,
+    "referral_rating": 4,
+    "hire_feedback": "This is test feedback",
+    "resume": "http://jobhuk-dev.s3.amazonaws.com/uploads/resume/resume/resume_file/13/test.txt",
+    "interview_details": {},
+    "conversations_count": 1,
+    "verified": false,
+    "discarded_by": " "
+  }, {
+    "submission_id": 12,
+    "job_id": 1117,
+    "submitter_name": "V4@Startupsourcing.Com",
+    "profile_image": "https://jobhuk.com/assets/profile.jpeg",
+    "referral_status": "discarded",
+    "referral_tag": null,
+    "discard_feedback": 0,
+    "candidate_rating": 0,
+    "referral_rating": 0,
+    "hire_feedback": 0,
+    "resume": "http://jobhuk-dev.s3.amazonaws.com/uploads/resume/resume/resume_file/12/test.txt",
+    "interview_details": {},
+    "conversations_count": 0,
+    "verified": false,
+    "discarded_by": " "
+  }]
+}
+```
+
+This endpoint returns specific candidates submitted to job by you as a recruiter
+
+### HTTP Request
+
+`GET http://jobhuk.com/api/v1/jobs/<job_id>/submitted_candidates`
+
+### URL Parameters
+
+Parameter | Value   | Description
+--------- | ------  | -----------
+job_id<br>required | integer | unique job id
+
 
 
