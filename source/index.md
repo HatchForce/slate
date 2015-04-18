@@ -339,6 +339,90 @@ curl http://jobhuk.com/api/v1/jobs.json
   "jobs":[
     {
       "id":1115,
+      "title":"Senior Software Engineer",
+      "location":"Austin, TX",
+      "description":"his is a senior software engineer position to support the software development for field portable analytical instruments...",
+      "job_type":"Contract",
+      "comp_range":4,
+      "show_market_place":"true",
+      "hide_salary":null,
+      "active":true,
+      "joining_date":null,
+      "travel_percentage":null,
+      "relocation":null,
+      "payment_duration":"60",      
+      "client_name":null,
+      "compensation":12800,
+      "finders_fee_amount":"2400.0",
+      "finders_fee":5.0,
+      "finders_fee_type":"percentage",
+      "hourly_rate":"50.0",
+      "duration":8,
+      "duration_type":"Weeks",
+      "skills":"java, mysql",
+      "company": {
+          "short_description": "",
+          "long_description": "",
+          "year_founded": "2013",
+          "logo": "https://jobhuk-staging.s3.amazonaws.com/uploads/company_images/company/image/23/Screen_Shot_2014-06-13_at_7.59.14_AM.png",
+          "company_type": null,
+          "id": 23,
+          "name": "Visa Inc11",
+          "address": "3500",
+          "website": "visa.com",
+          "phone": "(111) 111-1111",
+          "fax": null,
+          "city": "Austin",
+          "state": "Texas",
+          "zip": "78759",
+          "created_at": "2013-06-29T16:27:19-05:00",
+          "social_profile_links": null,
+          "email": null,
+          "about_team": "<p>s</p>\r\n",
+          "tag_line": "csssdsd",
+          "about_benefits": "<p>s</p>\r\n",
+          "verified": false
+      }
+    }, {
+      "id":1116,
+      "title":"Senior Software Engineer",
+      "location":"Austin, TX",
+      "description":"his is a senior software engineer position to support the software development for field portable analytical instruments...",
+      "job_type":"Contract"        
+    }
+  ]
+}
+```
+
+This endpoint gets all jobs posted in jobhuk.
+
+### HTTP Request
+
+`GET http://jobhuk.com/api/v1/jobs.json`
+
+## My Jobs
+
+```ruby
+require 'httparty'
+
+response = HTTParty.get("http://jobhuk.com/api/v1/jobs.json", headers: {"Token" => "API_TOKEN"})
+jobs = response.body
+```
+
+```shell
+curl http://jobhuk.com/api/v1/jobs.json
+  -H "Token: API_TOKEN"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "successful":true,
+  "count":10,
+  "jobs":[
+    {
+      "id":1115,
       "title":"r_api1 job contrat1",
       "location":"hyderabad",
       "description":"this is job from r_api user from api",
@@ -399,17 +483,7 @@ curl http://jobhuk.com/api/v1/jobs.json
 }
 ```
 
-This endpoint gets all jobs posted in jobhuk.
-
-### HTTP Request
-
-`GET http://jobhuk.com/api/v1/jobs.json`
-
-## My Jobs
-
 This endpoint get list of jobs approved by jobhuk admin and posted by you in jobhuk
-
-
 
 ### HTTP Request
 
