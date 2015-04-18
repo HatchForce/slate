@@ -742,7 +742,7 @@ curl http://jobhuk.com/api/v1/jobs/1117.json
 ```json
 {
     "successful": true,
-    "job": "Deleted successfully 1124. This operation is irreversible."
+    "job": "Deleted successfully 1117. This operation is irreversible."
 }
 ```
 
@@ -887,36 +887,40 @@ curl http://jobhuk.com/api/v1/jobs/1117/candidates
 > The above command returns JSON structured like this:
 
 ```json
-{ 
+{
   "successful": true,
   "submitted_users": [{
-    "submission_id": 13,
-    "job_id": 1117,
-    "submitter_name": "john",
-    "profile_image": "https://jobhuk.com/assets/profile.jpeg",
-    "referral_status": "hired",
-    "referral_tag": "shortlisted",
-    "discard_feedback": 0,
-    "candidate_rating": 3,
-    "referral_rating": 4,
-    "hire_feedback": "This is test feedback",
-    "resume": "http://jobhuk-dev.s3.amazonaws.com/uploads/resume/resume/resume_file/13/test.txt",
-    "interview_details": {},
-    "conversations_count": 1,
-    "verified": false,
-    "discarded_by": " "
-  }, {
-    "submission_id": 12,
-    "job_id": 1117,
-    "submitter_name": "V4@Startupsourcing.Com",
-    "profile_image": "https://jobhuk.com/assets/profile.jpeg",
-    "referral_status": "discarded",
-    "referral_tag": null,
+    "submission_id": 533,
+    "job_id": 1115,
+    "candidate": {
+        "name": "John",
+        "profile_image": "https://jobhuk.com/assets/profile.jpeg",
+        "profile_page": "http://jobhuk.com/me/johnd"
+    },
+    "referral_status": "submitted",
     "discard_feedback": 0,
     "candidate_rating": 0,
     "referral_rating": 0,
     "hire_feedback": 0,
-    "resume": "http://jobhuk-dev.s3.amazonaws.com/uploads/resume/resume/resume_file/12/test.txt",
+    "resume": "https://jobhuk-staging.s3.amazonaws.com/uploads/resume/resume/resume_file/414/Sr__ROR_Developer.docx",
+    "interview_details": {},
+    "conversations_count": 0,
+    "verified": false,
+    "discarded_by": " "
+  }, {
+    "submission_id": 521,
+    "job_id": 1115,
+    "candidate": {
+        "name": "Alex",
+        "profile_image": "https://jobhuk.com/assets/profile.jpeg",
+        "profile_page": "http://jobhuk.com/me/alexd"
+    },
+    "referral_status": "submitted",
+    "discard_feedback": 0,
+    "candidate_rating": 2,
+    "referral_rating": 3,
+    "hire_feedback": 0,
+    "resume": "https://jobhuk-staging.s3.amazonaws.com/uploads/resume/resume/resume_file/402/Sr__ROR_Developer.docx",
     "interview_details": {},
     "conversations_count": 0,
     "verified": false,
@@ -942,48 +946,52 @@ job_id<br>required | integer | unique job id
 ```ruby
 require 'httparty'
 
-response = HTTParty.get("http://jobhuk.com/api/v1/jobs/1117/submitted_candidates", headers: {"Token" => "API_TOKEN"})
+response = HTTParty.get("http://jobhuk.com/api/v1/jobs/1115/submitted_candidates", headers: {"Token" => "API_TOKEN"})
 candidates = response.body
 ```
 
 ```shell
-curl http://jobhuk.com/api/v1/jobs/1117/submitted_candidates 
+curl http://jobhuk.com/api/v1/jobs/1115/submitted_candidates 
   -H "Token:API_TOKEN"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-{ 
+{
   "successful": true,
   "submitted_users": [{
-    "submission_id": 13,
-    "job_id": 1117,
-    "submitter_name": "john",
-    "profile_image": "https://jobhuk.com/assets/profile.jpeg",
-    "referral_status": "hired",
-    "referral_tag": "shortlisted",
-    "discard_feedback": 0,
-    "candidate_rating": 3,
-    "referral_rating": 4,
-    "hire_feedback": "This is test feedback",
-    "resume": "http://jobhuk-dev.s3.amazonaws.com/uploads/resume/resume/resume_file/13/test.txt",
-    "interview_details": {},
-    "conversations_count": 1,
-    "verified": false,
-    "discarded_by": " "
-  }, {
-    "submission_id": 12,
-    "job_id": 1117,
-    "submitter_name": "V4@Startupsourcing.Com",
-    "profile_image": "https://jobhuk.com/assets/profile.jpeg",
-    "referral_status": "discarded",
-    "referral_tag": null,
+    "submission_id": 533,
+    "job_id": 1115,
+    "candidate": {
+        "name": "John",
+        "profile_image": "https://jobhuk.com/assets/profile.jpeg",
+        "profile_page": "http://jobhuk.com/me/johnd"
+    },
+    "referral_status": "submitted",
     "discard_feedback": 0,
     "candidate_rating": 0,
     "referral_rating": 0,
     "hire_feedback": 0,
-    "resume": "http://jobhuk-dev.s3.amazonaws.com/uploads/resume/resume/resume_file/12/test.txt",
+    "resume": "https://jobhuk-staging.s3.amazonaws.com/uploads/resume/resume/resume_file/414/Sr__ROR_Developer.docx",
+    "interview_details": {},
+    "conversations_count": 0,
+    "verified": false,
+    "discarded_by": " "
+  }, {
+    "submission_id": 521,
+    "job_id": 1115,
+    "candidate": {
+        "name": "Alex",
+        "profile_image": "https://jobhuk.com/assets/profile.jpeg",
+        "profile_page": "http://jobhuk.com/me/alexd"
+    },
+    "referral_status": "submitted",
+    "discard_feedback": 0,
+    "candidate_rating": 2,
+    "referral_rating": 3,
+    "hire_feedback": 0,
+    "resume": "https://jobhuk-staging.s3.amazonaws.com/uploads/resume/resume/resume_file/402/Sr__ROR_Developer.docx",
     "interview_details": {},
     "conversations_count": 0,
     "verified": false,
