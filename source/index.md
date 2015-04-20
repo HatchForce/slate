@@ -952,12 +952,12 @@ candidate[public_profile_url]<br>required | string | candidate's linkedin or fac
 ```ruby
 require 'httparty'
 
-response = HTTParty.get("http://jobhuk.com/api/v1/jobs/1117/candidates", headers: {"Token" => "API_TOKEN"})
+response = HTTParty.get("http://jobhuk.com/api/v1/jobs/1281/candidates", headers: {"Token" => "API_TOKEN"})
 candidates = response.body
 ```
 
 ```shell
-curl http://jobhuk.com/api/v1/jobs/1117/candidates 
+curl http://jobhuk.com/api/v1/jobs/1281/candidates 
   -H "Token:API_TOKEN"
 ```
 
@@ -965,44 +965,90 @@ curl http://jobhuk.com/api/v1/jobs/1117/candidates
 
 ```json
 {
-  "successful": true,
-  "submitted_users": [{
-    "submission_id": 533,
-    "job_id": 1115,
-    "candidate": {
-        "name": "John",
-        "profile_image": "https://jobhuk.com/assets/profile.jpeg",
-        "profile_page": "http://jobhuk.com/me/johnd"
-    },
-    "referral_status": "submitted",
-    "discard_feedback": 0,
-    "candidate_rating": 0,
-    "referral_rating": 0,
-    "hire_feedback": 0,
-    "resume": "https://jobhuk-staging.s3.amazonaws.com/uploads/resume/resume/resume_file/414/Sr__ROR_Developer.docx",
-    "interview_details": {},
-    "conversations_count": 0,
-    "verified": false,
-    "discarded_by": " "
-  }, {
-    "submission_id": 521,
-    "job_id": 1115,
-    "candidate": {
-        "name": "Alex",
-        "profile_image": "https://jobhuk.com/assets/profile.jpeg",
-        "profile_page": "http://jobhuk.com/me/alexd"
-    },
-    "referral_status": "submitted",
-    "discard_feedback": 0,
-    "candidate_rating": 2,
-    "referral_rating": 3,
-    "hire_feedback": 0,
-    "resume": "https://jobhuk-staging.s3.amazonaws.com/uploads/resume/resume/resume_file/402/Sr__ROR_Developer.docx",
-    "interview_details": {},
-    "conversations_count": 0,
-    "verified": false,
-    "discarded_by": " "
-  }]
+    "successful": true,
+    "count": 4,
+    "candidates": [
+        {
+            "submission": {
+                "id": 3417,
+                "job_id": 1281,
+                "user_id": 7841,
+                "referral_id": 11563,
+                "submission_type": "resume",
+                "contact_details": "name: test, Email: test@hatchforce.com",
+                "phone_number": "7679873541",
+                "public_profile_url": "https://jobhuk.s3.amazonaws.com/assets/v3.0/header_logo-1dc784d557ca8383748e986a661bd504.png",
+                "created_at": "2015-04-20T07:19:11-05:00"
+            },
+            "referral": {
+                "id": 11563,
+                "referral_type": "referral_submission",
+                "target_user_id": 7841,
+                "another_source_discard": null,
+                "admin_approved": true,
+                "verified": false,
+                "created_at": "2015-04-20T07:19:11-05:00"
+            },
+            "user": {
+                "id": 7841,
+                "email": "test@hatchforce.com",
+                "account_type": "individual"
+            },
+            "profile": {
+                "id": 7773,
+                "first_name": "test",
+                "middle_name": null,
+                "last_name": " ",
+                "social_picture": null,
+                "public_profile_url": null
+            },
+            "profile_image": "",
+            "profile_page": "https://jobhuk.com/me/test6",
+            "resume": {
+                "resume_file": "https://jobhuk.s3.amazonaws.com/uploads/resume/resume/resume_file/3371/test_resume.doc"
+            }
+        },
+        {
+            "submission": {
+                "id": 3415,
+                "job_id": 1281,
+                "user_id": 7839,
+                "referral_id": 11561,
+                "submission_type": "resume",
+                "contact_details": "name: venky1, Email: venkykvs@hatchforce.com",
+                "phone_number": "6679873541",
+                "public_profile_url": "https://jobhuk.s3.amazonaws.com/assets/v3.0/header_logo-1dc784d557ca8383748e986a661bd504.png",
+                "created_at": "2015-04-20T07:18:17-05:00"
+            },
+            "referral": {
+                "id": 11561,
+                "referral_type": "referral_submission",
+                "target_user_id": 7839,
+                "another_source_discard": null,
+                "admin_approved": null,
+                "verified": false,
+                "created_at": "2015-04-20T07:18:17-05:00"
+            },
+            "user": {
+                "id": 7839,
+                "email": "venkykvs@hatchforce.com",
+                "account_type": "individual"
+            },
+            "profile": {
+                "id": 7771,
+                "first_name": "venky1",
+                "middle_name": null,
+                "last_name": " ",
+                "social_picture": null,
+                "public_profile_url": null
+            },
+            "profile_image": "",
+            "profile_page": "https://jobhuk.com/me/venkykvs",
+            "resume": {
+                "resume_file": "https://jobhuk.s3.amazonaws.com/uploads/resume/resume/resume_file/3369/venky.doc"
+            }
+        }
+    ]
 }
 ```
 
@@ -1141,12 +1187,12 @@ job_id<br>required | integer | unique job id
 ```ruby
 require 'httparty'
 
-response = HTTParty.get("http://jobhuk.com/api/v1/jobs/1115/candidates/536", headers: {"Token" => "API_TOKEN"})
+response = HTTParty.get("http://jobhuk.com/api/v1/jobs/1281/candidates/3417", headers: {"Token" => "API_TOKEN"})
 candidates = response.body
 ```
 
 ```shell
-curl http://jobhuk.com/api/v1/jobs/1115/candidates/536 
+curl http://jobhuk.com/api/v1/jobs/1281/candidates/3417 
   -H "Token:API_TOKEN"
 ```
 
@@ -1155,83 +1201,45 @@ curl http://jobhuk.com/api/v1/jobs/1115/candidates/536
 ```json
 {
     "successful": true,
+    "code": 200,
     "candidate": {
         "submission": {
-            "id": 535,
-            "job_id": 1115,
-            "user_id": 668,
-            "referral_id": 813,
+            "id": 3417,
+            "job_id": 1281,
+            "user_id": 7841,
+            "referral_id": 11563,
             "submission_type": "resume",
-            "contact_details": "name: John, Email: johnd@hatchforce.com",
-            "candidate_action": null,
-            "phone_number": "1234567812",
-            "public_profile_url": "https://www.linkedin.com/in/scottsantucci",
-            "expire_at": null,
-            "created_at": "2015-04-18T07:36:35-05:00",
-            "updated_at": "2015-04-18T07:36:35-05:00"
+            "contact_details": "name: test, Email: test@hatchforce.com",
+            "phone_number": "7679873541",
+            "public_profile_url": "https://jobhuk.s3.amazonaws.com/assets/v3.0/header_logo-1dc784d557ca8383748e986a661bd504.png",
+            "created_at": "2015-04-20T07:19:11-05:00"
+        },
+        "referral": {
+            "id": 11563,
+            "referral_type": "referral_submission",
+            "target_user_id": 7841,
+            "another_source_discard": null,
+            "admin_approved": null,
+            "verified": false,
+            "created_at": "2015-04-20T07:19:11-05:00"
         },
         "user": {
-            "name": "John",
-            "profile_image": "https://jobhuk.com/assets/profile.jpeg",
-            "profile_page": "http://whosflying.com/me/johnd"
+            "id": 7841,
+            "email": "test@hatchforce.com",
+            "account_type": "individual"
         },
-        "referral_status": "submitted",
-        "referral_tag": null,
-        "resume": "https://jobhuk-staging.s3.amazonaws.com/uploads/resume/resume/resume_file/416/we2.txt",
-        "interview_details": null,
-        "feedback": null,
-        "conversations_count": 0,
-        "job": {
-            "id": 1115,
-            "title": "r_api1 job contrat1",
-            "location": "hyderabad",
-            "description": "this is job from r_api user from api",
-            "job_type": "Contract",
-            "comp_range": 4,
-            "show_market_place": true,
-            "hide_salary": null,
-            "active": true,
-            "joining_date": null,
-            "travel_percentage": null,
-            "relocation": null,
-            "payment_duration": "60",
-            "city": "Hyderabad",
-            "state": "Andhra Pradesh",
-            "country": "India",
-            "country_code": null,
-            "zip_code": null,
-            "client_name": null,
-            "compensation": 12800,
-            "finders_fee_amount": "2400.0",
-            "finders_fee": 5,
-            "finders_fee_type": "percentage",
-            "hourly_rate": "50.0",
-            "duration": 8,
-            "duration_type": "Weeks",
-            "skills": "",
-            "company": {
-                "short_description": null,
-                "long_description": null,
-                "year_founded": null,
-                "logo": "https://jobhuk.com/assets/company.png",
-                "company_type": "staffing",
-                "id": 297,
-                "name": "r_api11",
-                "address": null,
-                "website": "r_api1.com",
-                "phone": "1112223333",
-                "fax": null,
-                "city": null,
-                "state": null,
-                "zip": null,
-                "created_at": "2015-04-16T04:15:14-05:00",
-                "social_profile_links": null,
-                "email": null,
-                "about_team": null,
-                "tag_line": null,
-                "about_benefits": null,
-                "verified": false
-            }
+        "profile": {
+            "id": 7773,
+            "first_name": "test",
+            "middle_name": null,
+            "last_name": " ",
+            "social_picture": null,
+            "public_profile_url": null
+        },
+        "profile_image": "",
+        "profile_page": "https://jobhuk.com/me/test6",
+        "resume": {
+            "resume_file": "https://jobhuk.s3.amazonaws.com/uploads/resume/resume/resume_file/3371/test_resume.doc"
         }
     }
 }
