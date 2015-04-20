@@ -1087,4 +1087,170 @@ Parameter | Value   | Description
 job_id<br>required | integer | unique job id
 
 
+## Get Candidate
+
+```ruby
+require 'httparty'
+
+response = HTTParty.get("http://jobhuk.com/api/v1/jobs/1115/candidates/536", headers: {"Token" => "API_TOKEN"})
+candidates = response.body
+```
+
+```shell
+curl http://jobhuk.com/api/v1/jobs/1115/candidates/536 
+  -H "Token:API_TOKEN"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "successful": true,
+    "candidate": {
+        "submission": {
+            "id": 535,
+            "job_id": 1115,
+            "user_id": 668,
+            "referral_id": 813,
+            "submission_type": "resume",
+            "contact_details": "name: John, Email: johnd@hatchforce.com",
+            "candidate_action": null,
+            "phone_number": "1234567812",
+            "public_profile_url": "https://www.linkedin.com/in/scottsantucci",
+            "expire_at": null,
+            "created_at": "2015-04-18T07:36:35-05:00",
+            "updated_at": "2015-04-18T07:36:35-05:00"
+        },
+        "user": {
+            "name": "John",
+            "profile_image": "https://jobhuk.com/assets/profile.jpeg",
+            "profile_page": "http://whosflying.com/me/johnd"
+        },
+        "referral_status": "submitted",
+        "referral_tag": null,
+        "resume": "https://jobhuk-staging.s3.amazonaws.com/uploads/resume/resume/resume_file/416/we2.txt",
+        "interview_details": null,
+        "feedback": null,
+        "conversations_count": 0,
+        "job": {
+            "id": 1115,
+            "title": "r_api1 job contrat1",
+            "location": "hyderabad",
+            "description": "this is job from r_api user from api",
+            "job_type": "Contract",
+            "comp_range": 4,
+            "show_market_place": true,
+            "hide_salary": null,
+            "active": true,
+            "joining_date": null,
+            "travel_percentage": null,
+            "relocation": null,
+            "payment_duration": "60",
+            "city": "Hyderabad",
+            "state": "Andhra Pradesh",
+            "country": "India",
+            "country_code": null,
+            "zip_code": null,
+            "client_name": null,
+            "compensation": 12800,
+            "finders_fee_amount": "2400.0",
+            "finders_fee": 5,
+            "finders_fee_type": "percentage",
+            "hourly_rate": "50.0",
+            "duration": 8,
+            "duration_type": "Weeks",
+            "skills": "",
+            "company": {
+                "short_description": null,
+                "long_description": null,
+                "year_founded": null,
+                "logo": "https://jobhuk.com/assets/company.png",
+                "company_type": "staffing",
+                "id": 297,
+                "name": "r_api11",
+                "address": null,
+                "website": "r_api1.com",
+                "phone": "1112223333",
+                "fax": null,
+                "city": null,
+                "state": null,
+                "zip": null,
+                "created_at": "2015-04-16T04:15:14-05:00",
+                "social_profile_links": null,
+                "email": null,
+                "about_team": null,
+                "tag_line": null,
+                "about_benefits": null,
+                "verified": false
+            }
+        }
+    }
+}
+```
+
+This endpoint returns submitted candidate details to specific job 
+
+### HTTP Request
+
+`GET http://jobhuk.com/api/v1/jobs/<job_id>/candidates/<id>`
+
+### URL Parameters
+
+Parameter | Value   | Description
+--------- | ------  | -----------
+job_id<br>required | integer | unique job id
+id<br>required | integer | unique candidate id
+
+# Industries
+
+## Get Industries
+
+```ruby
+require 'httparty'
+
+response = HTTParty.get("http://jobhuk.com/api/v1/industries", headers: {"Token" => "API_TOKEN"})
+candidates = response.body
+```
+
+```shell
+curl http://jobhuk.com/api/v1/industries 
+  -H "Token:API_TOKEN"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "successful": true,
+    "industries": [
+        {
+            "id": 59,
+            "name": "Human Resources"
+        },          
+        {
+            "id": 175,
+            "name": "Product Management"
+        },
+        {
+            "id": 176,
+            "name": "Customer Service"
+        },
+        {
+            "id": 177,
+            "name": "Quality Assurance"
+        },         
+        {
+            "id": 184,
+            "name": "Other"
+        }
+    ]
+}
+```
+
+This endpoint returns list of industries 
+
+### HTTP Request
+
+`GET http://jobhuk.com/api/v1/industries`
+
 
