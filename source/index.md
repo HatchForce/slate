@@ -69,34 +69,37 @@ curl "http://jobhuk.com/api/v1/companies.json"
 ```json
 {
     "successful": true,
-    "count": 35,
-    "active_company_id": "314",
-    "companies": [{
-        "id":2,
-        "name":"jobhuk",
-        "address":"610 Brazos St. Suite 300D Austin TX 78701",
-        "website":"http://jobhuk.com",
-        "phone":"+1 (855)-855-8359",
-        "fax":"+1 (855)-855-8359",
-        "city":"Austin",
-        "state":"TX",
-        "zip":"78701",
-        "created_at":"2015-04-16T04:59:14-05:00",
-        "logo":"https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1089/jobhuk_logo_stacked_600r.jpg",
-        "founded":"2014",
-        "about":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
-        "description":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
-        "social_profile_links":["https://www.facebook.com/Jobhuk", "https://www.linkedin.com/company/jobhuk"],
-        "email":"contact@jobhuk.com",
-        "about_team":"",
-        "tag_line":"recruitment marketplace",
-        "about_benefits":"",
-        "company_type":"staffing",
-        "verified":"true"
-      }, {
-        "id":3,
-        "name":"Some Company"
-      }
+    "count": 2,
+    "active_company_id": "1281",
+    "companies": [
+        {
+            "short_description": "jobhukapi",
+            "long_description": "Jobhuk API is an austin based company",
+            "year_founded": "2010",
+            "logo": "https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1281/header_logo-1dc784d557ca8383748e986a661bd504.png",
+            "company_type": "employer",
+            "id": 1281,
+            "name": "JobhukAPI",
+            "address": "#302 ",
+            "website": "www.jobhukapi.com",
+            "phone": "1234567890",
+            "fax": "0987654321",
+            "city": "Austin",
+            "state": "TX",
+            "zip": "500018",
+            "created_at": "2015-04-20T06:18:05-05:00",
+            "social_profile_links": null,
+            "email": "care@jobhukapi.com",
+            "about_team": "jobhukapi.com",
+            "tag_line": "Jobhuk API",
+            "about_benefits": "jobhukapi.com",
+            "verified": false
+        },
+        {
+            "short_description": "venkysoft",
+            "long_description": "venkysoft is a austin based comapany",
+            "year_founded": "2010"
+        }
     ]
 }
 ```
@@ -128,28 +131,28 @@ curl "http://jobhuk.com/api/v1/companies.json"
 ```json
 {
     "successful": true,
-    "company":{
-    "id":2,
-    "name":"jobhuk",
-    "address":"610 Brazos St. Suite 300D Austin TX 78701",
-    "website":"http://jobhuk.com",
-    "phone":"+1 (855)-855-8359",
-    "fax":"+1 (855)-855-8359",
-    "city":"Austin",
-    "state":"TX",
-    "zip":"78701",
-    "created_at":"2015-04-16T04:59:14-05:00",
-    "logo":"https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1089/jobhuk_logo_stacked_600r.jpg",
-    "founded":"2014",
-    "about":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
-    "description":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
-    "social_profile_links":["https://www.facebook.com/Jobhuk", "https://www.linkedin.com/company/jobhuk"],
-    "email":"contact@jobhuk.com",
-    "about_team":"",
-    "tag_line":"recruitment marketplace",
-    "about_benefits":"",
-    "company_type":"staffing",
-    "verified":"true"
+    "company": {
+        "short_description": "jobhukapi",
+        "long_description": "Jobhuk API is an austin based company",
+        "year_founded": "2010",
+        "logo": "https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1281/header_logo-1dc784d557ca8383748e986a661bd504.png",
+        "company_type": "employer",
+        "id": 1281,
+        "name": "JobhukAPI",
+        "address": "#302 ",
+        "website": "www.jobhukapi.com",
+        "phone": "1234567890",
+        "fax": "0987654321",
+        "city": "Austin",
+        "state": "TX",
+        "zip": "500018",
+        "created_at": "2015-04-20T06:18:05-05:00",
+        "social_profile_links": null,
+        "email": "care@jobhukapi.com",
+        "about_team": "jobhukapi.com",
+        "tag_line": "Jobhuk API",
+        "about_benefits": "jobhukapi.com",
+        "verified": false
     }
 }
 ```
@@ -202,28 +205,28 @@ curl "http://jobhuk.com/api/v1/companies/2.json"
 ```json
 {
     "successful": true,
-    "company":{
-    "id":2,
-    "name":"jobhuk",
-    "address":"610 Brazos St. Suite 300D Austin TX 78701",
-    "website":"http://jobhuk.com",
-    "phone":"+1 (855)-855-8359",
-    "fax":"+1 (855)-855-8359",
-    "city":"Austin",
-    "state":"TX",
-    "zip":"78701",
-    "created_at":"2015-04-16T04:59:14-05:00",
-    "logo":"https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1089/jobhuk_logo_stacked_600r.jpg",
-    "founded":"2014",
-    "about":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
-    "description":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
-    "social_profile_links":["https://www.facebook.com/Jobhuk", "https://www.linkedin.com/company/jobhuk"],
-    "email":"contact@jobhuk.com",
-    "about_team":"",
-    "tag_line":"recruitment marketplace",
-    "about_benefits":"",
-    "company_type":"staffing",
-    "verified":"true"
+    "company": {
+        "short_description": "jobhukapi",
+        "long_description": "Jobhuk API is an austin based company",
+        "year_founded": "2010",
+        "logo": "https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1281/header_logo-1dc784d557ca8383748e986a661bd504.png",
+        "company_type": "employer",
+        "id": 1281,
+        "name": "JobhukAPI",
+        "address": "#302 ",
+        "website": "www.jobhukapi.com",
+        "phone": "1234567890",
+        "fax": "0987654321",
+        "city": "Austin",
+        "state": "TX",
+        "zip": "500018",
+        "created_at": "2015-04-20T06:18:05-05:00",
+        "social_profile_links": null,
+        "email": "care@jobhukapi.com",
+        "about_team": "jobhukapi.com",
+        "tag_line": "Jobhuk API",
+        "about_benefits": "jobhukapi.com",
+        "verified": false
     }
 }
 ```
@@ -260,27 +263,30 @@ curl "http://jobhuk.com/api/v1/companies/2.json"
 
 ```json
 {
-  "id":2,
-  "name":"jobhuk",
-  "address":"610 Brazos St. Suite 300D Austin TX 78701",
-  "website":"http://jobhuk.com",
-  "phone":"+1 (855)-855-8359",
-  "fax":"+1 (855)-855-8359",
-  "city":"Austin",
-  "state":"TX",
-  "zip":"78701",
-  "created_at":"2015-04-16T04:59:14-05:00",
-  "logo":"https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1089/jobhuk_logo_stacked_600r.jpg",
-  "founded":"2014",
-  "about":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
-  "description":"Jobhuk is a unique self service platform serving as 'CrowdSourced Hiring MarketPlace' .... new marketplace which virtually exists in staffing in email, phone and verbal conversations.",
-  "social_profile_links":["https://www.facebook.com/Jobhuk", "https://www.linkedin.com/company/jobhuk"],
-  "email":"contact@jobhuk.com",
-  "about_team":"",
-  "tag_line":"recruitment marketplace",
-  "about_benefits":"",
-  "company_type":"staffing",
-  "verified":"true"
+    "successful": true,
+    "company": {
+        "short_description": "jobhukapi",
+        "long_description": "Jobhuk API is an austin based company",
+        "year_founded": "2010",
+        "logo": "https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1281/header_logo-1dc784d557ca8383748e986a661bd504.png",
+        "company_type": "employer",
+        "id": 1281,
+        "name": "JobhukAPI",
+        "address": "#302 ",
+        "website": "www.jobhukapi.com",
+        "phone": "1234567890",
+        "fax": "0987654321",
+        "city": "Austin",
+        "state": "TX",
+        "zip": "500018",
+        "created_at": "2015-04-20T06:18:05-05:00",
+        "social_profile_links": null,
+        "email": "care@jobhukapi.com",
+        "about_team": "jobhukapi.com",
+        "tag_line": "Jobhuk API",
+        "about_benefits": "jobhukapi.com",
+        "verified": false
+    }
 }
 ```
 
