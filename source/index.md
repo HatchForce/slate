@@ -86,7 +86,7 @@ curl "http://jobhuk.com/api/v1/companies.json"
             "fax": "0987654321",
             "city": "Austin",
             "state": "TX",
-            "zip": "500018",
+            "zip": "78703",
             "created_at": "2015-04-20T06:18:05-05:00",
             "social_profile_links": null,
             "email": "care@jobhukapi.com",
@@ -132,27 +132,24 @@ curl "http://jobhuk.com/api/v1/companies.json"
 {
     "successful": true,
     "company": {
-        "short_description": "jobhukapi",
-        "long_description": "Jobhuk API is an austin based company",
-        "year_founded": "2010",
-        "logo": "https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1281/header_logo-1dc784d557ca8383748e986a661bd504.png",
-        "company_type": "employer",
         "id": 1281,
-        "name": "JobhukAPI",
-        "address": "#302 ",
+        "name": "jobhukapi",
         "website": "www.jobhukapi.com",
+        "company_type": "employer",
         "phone": "1234567890",
+        "tag_line": "jobhukapi",
+        "address": "suite no 302",
         "fax": "0987654321",
         "city": "Austin",
         "state": "TX",
-        "zip": "500018",
-        "created_at": "2015-04-20T06:18:05-05:00",
-        "social_profile_links": null,
+        "zip": "78703",
+        "logo": "https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1283/header_logo-1dc784d557ca8383748e986a661bd504.png",
+        "year_founded": "2010",
+        "short_description": "jobhukapi",
+        "long_description": "Jobhuk API is an austin based company",
         "email": "care@jobhukapi.com",
-        "about_team": "jobhukapi.com",
-        "tag_line": "Jobhuk API",
-        "about_benefits": "jobhukapi.com",
-        "verified": false
+        "about_team": "jobhukapi",
+        "about_benefits": "jobhukapi"
     }
 }
 ```
@@ -191,12 +188,12 @@ company[about_benefits]<br>optional | string | information about company benefit
 ```ruby
 require 'httparty'
 
-response = HTTParty.get('http://jobhuk.com/api/v1/companies/2.json', headers: {"Token" => "API_TOKEN"})
+response = HTTParty.get('http://jobhuk.com/api/v1/companies/1281.json', headers: {"Token" => "API_TOKEN"})
 companies = response.body
 ```
 
 ```shell
-curl "http://jobhuk.com/api/v1/companies/2.json"
+curl "http://jobhuk.com/api/v1/companies/1281.json"
   -H "Token: API_TOKEN"
 ```
 
@@ -212,20 +209,20 @@ curl "http://jobhuk.com/api/v1/companies/2.json"
         "logo": "https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1281/header_logo-1dc784d557ca8383748e986a661bd504.png",
         "company_type": "employer",
         "id": 1281,
-        "name": "JobhukAPI",
-        "address": "#302 ",
+        "name": "jobhukapi test",
+        "address": "suite no 302",
         "website": "www.jobhukapi.com",
         "phone": "1234567890",
         "fax": "0987654321",
         "city": "Austin",
         "state": "TX",
-        "zip": "500018",
+        "zip": "78703",
         "created_at": "2015-04-20T06:18:05-05:00",
         "social_profile_links": null,
         "email": "care@jobhukapi.com",
-        "about_team": "jobhukapi.com",
-        "tag_line": "Jobhuk API",
-        "about_benefits": "jobhukapi.com",
+        "about_team": "jobhukapi",
+        "tag_line": "jobhukapi",
+        "about_benefits": "jobhukapi",
         "verified": false
     }
 }
@@ -248,12 +245,12 @@ id | integer | The id of the company to retrieve
 ```ruby
 require 'httparty'
 
-response = HTTParty.put("http://jobhuk.com/api/v1/companies/2.json", { body: {company: {name: "jobhuk", website: "http://jobhuk.com", phone: 8558558359, company_type: "staffing"}}, headers: {"Token" => "API_TOKEN"} })
+response = HTTParty.put("http://jobhuk.com/api/v1/companies/1281.json", { body: {company: {name: "jobhuk", website: "http://jobhuk.com", phone: 8558558359, company_type: "staffing"}}, headers: {"Token" => "API_TOKEN"} })
 company = response.body
 ```
 
 ```shell
-curl "http://jobhuk.com/api/v1/companies/2.json"
+curl "http://jobhuk.com/api/v1/companies/1281.json"
   -X POST 
   -H "Token:TW6SV34JL+M/WaVMY0tytrII2PJ1xAjSkV73qq2Gmzgv+8q0zSeIhijCLVSc9eSEb9jjuug/8ZtucVSacMFgeA=="
   --data "company[name]=test110&company[website]=test110.com&company[phone]=1234567890" 
@@ -264,6 +261,7 @@ curl "http://jobhuk.com/api/v1/companies/2.json"
 ```json
 {
     "successful": true,
+    "message": "Successfully updated company.",
     "company": {
         "short_description": "jobhukapi",
         "long_description": "Jobhuk API is an austin based company",
@@ -271,20 +269,20 @@ curl "http://jobhuk.com/api/v1/companies/2.json"
         "logo": "https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1281/header_logo-1dc784d557ca8383748e986a661bd504.png",
         "company_type": "employer",
         "id": 1281,
-        "name": "JobhukAPI",
-        "address": "#302 ",
+        "name": "jobhukapi test",
+        "address": "suite no 302",
         "website": "www.jobhukapi.com",
         "phone": "1234567890",
         "fax": "0987654321",
         "city": "Austin",
         "state": "TX",
-        "zip": "500018",
+        "zip": "78703",
         "created_at": "2015-04-20T06:18:05-05:00",
         "social_profile_links": null,
         "email": "care@jobhukapi.com",
-        "about_team": "jobhukapi.com",
-        "tag_line": "Jobhuk API",
-        "about_benefits": "jobhukapi.com",
+        "about_team": "jobhukapi",
+        "tag_line": "jobhukapi",
+        "about_benefits": "jobhukapi",
         "verified": false
     }
 }
@@ -340,63 +338,71 @@ curl http://jobhuk.com/api/v1/jobs.json
 
 ```json
 {
-  "successful":true,
-  "count":10,
-  "jobs":[
-    {
-      "id":1115,
-      "title":"Senior Software Engineer",
-      "location":"Austin, TX",
-      "description":"his is a senior software engineer position to support the software development for field portable analytical instruments...",
-      "job_type":"Contract",
-      "comp_range":4,
-      "show_market_place":"true",
-      "hide_salary":null,
-      "active":true,
-      "joining_date":null,
-      "travel_percentage":null,
-      "relocation":null,
-      "payment_duration":"60",      
-      "client_name":null,
-      "compensation":12800,
-      "finders_fee_amount":"2400.0",
-      "finders_fee":5.0,
-      "finders_fee_type":"percentage",
-      "hourly_rate":"50.0",
-      "duration":8,
-      "duration_type":"Weeks",
-      "skills":"java, mysql",
-      "company": {
-          "short_description": "",
-          "long_description": "",
-          "year_founded": "2013",
-          "logo": "https://jobhuk-staging.s3.amazonaws.com/uploads/company_images/company/image/23/Screen_Shot_2014-06-13_at_7.59.14_AM.png",
-          "company_type": null,
-          "id": 23,
-          "name": "Visa Inc11",
-          "address": "3500",
-          "website": "visa.com",
-          "phone": "(111) 111-1111",
-          "fax": null,
-          "city": "Austin",
-          "state": "Texas",
-          "zip": "78759",
-          "created_at": "2013-06-29T16:27:19-05:00",
-          "social_profile_links": null,
-          "email": null,
-          "about_team": "<p>s</p>\r\n",
-          "tag_line": "csssdsd",
-          "about_benefits": "<p>s</p>\r\n",
-          "verified": false
-      }
-    }, {
-      "id":1116,
-      "title":"Senior Software Engineer",
-      "location":"Austin, TX",
-      "description":"his is a senior software engineer position to support the software development for field portable analytical instruments...",
-      "job_type":"Contract"        
-    }
-  ]
+    "successful": true,
+    "count": 2,
+    "jobs": [
+        {
+            "id": 1318,
+            "title": "Ruby Senior Programmer ",
+            "location": "Auxtin",
+            "description": "Ruby Programmer ",
+            "job_type": "FullTime",
+            "comp_range": 0,
+            "show_market_place": true,
+            "hide_salary": true,
+            "active": true,
+            "joining_date": null,
+            "travel_percentage": null,
+            "relocation": null,
+            "payment_duration": "60",
+            "city": "Austin",
+            "state": "TX",
+            "country": "United States",
+            "country_code": null,
+            "zip_code": null,
+            "client_name": null,
+            "compensation": 120000,
+            "finders_fee_amount": "8640.0",
+            "finders_fee": 9,
+            "finders_fee_type": "percentage",
+            "hourly_rate": null,
+            "duration": null,
+            "duration_type": null,
+            "skills": "ruby, rails, jquery, mysql",
+            "industry": {
+                "id": 181,
+                "name": "it industry"
+            },
+            "company": {
+                "short_description": "jobhukapi",
+                "long_description": "Jobhuk API is an austin based company",
+                "year_founded": "2010",
+                "logo": "https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1281/header_logo-1dc784d557ca8383748e986a661bd504.png",
+                "company_type": "employer",
+                "id": 1281,
+                "name": "jobhukapi test",
+                "address": "suite no 302",
+                "website": "www.jobhukapi.com",
+                "phone": "1234567890",
+                "fax": "0987654321",
+                "city": "Austin",
+                "state": "TX",
+                "zip": "78703",
+                "created_at": "2015-04-20T06:18:05-05:00",
+                "social_profile_links": null,
+                "email": "care@jobhukapi.com",
+                "about_team": "jobhukapi",
+                "tag_line": "jobhukapi",
+                "about_benefits": "jobhukapi",
+                "verified": false
+            }
+        },
+        {
+          "id": 1317,
+          "title": "Ruby Programmer ",
+          "location": "Auxtin"          
+        }
+    ]
 }
 ```
 
@@ -424,68 +430,71 @@ curl http://jobhuk.com/api/v1/jobs.json
 
 ```json
 {
-  "successful":true,
-  "count":10,
-  "jobs":[
-    {
-      "id":1115,
-      "title":"r_api1 job contrat1",
-      "location":"hyderabad",
-      "description":"this is job from r_api user from api",
-      "job_type":"Contract",
-      "comp_range":4,
-      "show_market_place":"true",
-      "hide_salary":null,
-      "active":true,
-      "joining_date":null,
-      "travel_percentage":null,
-      "relocation":null,
-      "payment_duration":"60",
-      "city":"Hyderabad",
-      "state":"Andhra Pradesh",
-      "country":"India",
-      "country_code":null,
-      "zip_code":null,
-      "client_name":null,
-      "compensation":12800,
-      "finders_fee_amount":"2400.0",
-      "finders_fee":5.0,
-      "finders_fee_type":"percentage",
-      "hourly_rate":"50.0",
-      "duration":8,
-      "duration_type":"Weeks",
-      "skills":"java, orcale",
-      "company": {
-          "short_description": "<p>Visa...</p>\r\n",
-          "long_description": "<p>s</p>\r\n",
-          "year_founded": "2013",
-          "logo": "https://jobhuk-staging.s3.amazonaws.com/uploads/company_images/company/image/23/Screen_Shot_2014-06-13_at_7.59.14_AM.png",
-          "company_type": null,
-          "id": 23,
-          "name": "Visa Inc11",
-          "address": "3500",
-          "website": "visa.com",
-          "phone": "(111) 111-1111",
-          "fax": null,
-          "city": "Austin",
-          "state": "Texas",
-          "zip": "78759",
-          "created_at": "2013-06-29T16:27:19-05:00",
-          "social_profile_links": null,
-          "email": null,
-          "about_team": "<p>s</p>\r\n",
-          "tag_line": "csssdsd",
-          "about_benefits": "<p>s</p>\r\n",
-          "verified": false
-      }
-    }, {
-      "id":1115,
-      "title":"r_api1 job contrat1",
-      "location":"hyderabad",
-      "description":"this is job from r_api user from api",
-      "job_type":"Contract"        
-    }
-  ]
+    "successful": true,
+    "count": 2,
+    "jobs": [
+        {
+            "id": 1318,
+            "title": "Ruby Senior Programmer ",
+            "location": "Auxtin",
+            "description": "Ruby Programmer ",
+            "job_type": "FullTime",
+            "comp_range": 0,
+            "show_market_place": true,
+            "hide_salary": true,
+            "active": true,
+            "joining_date": null,
+            "travel_percentage": null,
+            "relocation": null,
+            "payment_duration": "60",
+            "city": "Austin",
+            "state": "TX",
+            "country": "United States",
+            "country_code": null,
+            "zip_code": null,
+            "client_name": null,
+            "compensation": 120000,
+            "finders_fee_amount": "8640.0",
+            "finders_fee": 9,
+            "finders_fee_type": "percentage",
+            "hourly_rate": null,
+            "duration": null,
+            "duration_type": null,
+            "skills": "ruby, rails, jquery, mysql",
+            "industry": {
+                "id": 181,
+                "name": "it industry"
+            },
+            "company": {
+                "short_description": "jobhukapi",
+                "long_description": "Jobhuk API is an austin based company",
+                "year_founded": "2010",
+                "logo": "https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1281/header_logo-1dc784d557ca8383748e986a661bd504.png",
+                "company_type": "employer",
+                "id": 1281,
+                "name": "jobhukapi test",
+                "address": "suite no 302",
+                "website": "www.jobhukapi.com",
+                "phone": "1234567890",
+                "fax": "0987654321",
+                "city": "Austin",
+                "state": "TX",
+                "zip": "78703",
+                "created_at": "2015-04-20T06:18:05-05:00",
+                "social_profile_links": null,
+                "email": "care@jobhukapi.com",
+                "about_team": "jobhukapi",
+                "tag_line": "jobhukapi",
+                "about_benefits": "jobhukapi",
+                "verified": false
+            }
+        },
+        {
+          "id": 1317,
+          "title": "Ruby Programmer ",
+          "location": "Auxtin"          
+        }
+    ]
 }
 ```
 
@@ -515,59 +524,64 @@ curl http://jobhuk.com/api/v1/my_jobs.json
 
 ```json
 {
-  "successful":true,
-  "job": {
-    "id":1117,
-    "title":"Senior Software Engineer",
-    "location":"Austin, TX",
-    "description":"This is a senior software engineer position to support the software development for field portable analytical instruments...",
-    "job_type":"FullTime",
-    "comp_range":5,
-    "show_market_place":true,
-    "hide_salary":true,
-    "active":true,
-    "joining_date":null,
-    "travel_percentage":null,
-    "relocation":null,
-    "payment_duration":"60",
-    "city":"Austin",
-    "state":"TX",
-    "country":"United States",
-    "country_code":null,
-    "zip_code":null,
-    "client_name":null,
-    "compensation":100000,
-    "finders_fee_amount":"4000.0",
-    "finders_fee":5.0,
-    "finders_fee_type":"percentage",
-    "hourly_rate":null,
-    "duration":null,
-    "duration_type":null,
-    "skills":"Java, Oracle",
-    "company": {
-      "short_description": "<p>Visa...</p>\r\n",
-      "long_description": "<p>s</p>\r\n",
-      "year_founded": "2013",
-      "logo": "https://jobhuk-staging.s3.amazonaws.com/uploads/company_images/company/image/23/Screen_Shot_2014-06-13_at_7.59.14_AM.png",
-      "company_type": null,
-      "id": 23,
-      "name": "Visa Inc11",
-      "address": "3500",
-      "website": "visa.com",
-      "phone": "(111) 111-1111",
-      "fax": null,
-      "city": "Austin",
-      "state": "Texas",
-      "zip": "78759",
-      "created_at": "2013-06-29T16:27:19-05:00",
-      "social_profile_links": null,
-      "email": null,
-      "about_team": "<p>s</p>\r\n",
-      "tag_line": "csssdsd",
-      "about_benefits": "<p>s</p>\r\n",
-      "verified": false
+    "successful": true,
+    "code": 200,
+    "job": {
+        "id": 1318,
+        "title": "Ruby Programmer ",
+        "location": "Auxtin",
+        "description": "Ruby Programmer ",
+        "job_type": "FullTime",
+        "comp_range": 0,
+        "show_market_place": true,
+        "hide_salary": true,
+        "active": true,
+        "joining_date": null,
+        "travel_percentage": null,
+        "relocation": null,
+        "payment_duration": "60",
+        "city": "Austin",
+        "state": "TX",
+        "country": "United States",
+        "country_code": null,
+        "zip_code": null,
+        "client_name": null,
+        "compensation": 120000,
+        "finders_fee_amount": "8640.0",
+        "finders_fee": 9,
+        "finders_fee_type": "percentage",
+        "hourly_rate": null,
+        "duration": null,
+        "duration_type": null,
+        "skills": "Ruby,Rails,jQuery,MySql",
+        "industry": {
+            "id": 181,
+            "name": "it industry"
+        },
+        "company": {
+            "short_description": "jobhukapi",
+            "long_description": "Jobhuk API is an austin based company",
+            "year_founded": "2010",
+            "logo": "https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1281/header_logo-1dc784d557ca8383748e986a661bd504.png",
+            "company_type": "employer",
+            "id": 1281,
+            "name": "jobhukapi test",
+            "address": "suite no 302",
+            "website": "www.jobhukapi.com",
+            "phone": "1234567890",
+            "fax": "0987654321",
+            "city": "Austin",
+            "state": "TX",
+            "zip": "78703",
+            "created_at": "2015-04-20T06:18:05-05:00",
+            "social_profile_links": null,
+            "email": "care@jobhukapi.com",
+            "about_team": "jobhukapi",
+            "tag_line": "jobhukapi",
+            "about_benefits": "jobhukapi",
+            "verified": false
+        }
     }
-  } 
 }
 ```
 
@@ -610,12 +624,12 @@ job[industry]<br>optional | string | job industry type
 ```ruby
 require 'httparty'
 
-response = HTTParty.get("http://jobhuk.com/api/v1/jobs/1117.json", headers: {"Token" => "API_TOKEN"})
+response = HTTParty.get("http://jobhuk.com/api/v1/jobs/1318.json", headers: {"Token" => "API_TOKEN"})
 job = response.body
 ```
 
 ```shell
-curl http://jobhuk.com/api/v1/jobs/1117.json
+curl http://jobhuk.com/api/v1/jobs/1318.json
   -H "Token:API_TOKEN"
 ```
 
@@ -623,59 +637,63 @@ curl http://jobhuk.com/api/v1/jobs/1117.json
 
 ```json
 {
-  "successful":true,
-  "job": {
-    "id":1117,
-    "title":"Senior Software Engineer",
-    "location":"Austin, TX",
-    "description":"This is a senior software engineer position to support the software development for field portable analytical instruments...",
-    "job_type":"FullTime",
-    "comp_range":5,
-    "show_market_place":true,
-    "hide_salary":true,
-    "active":true,
-    "joining_date":null,
-    "travel_percentage":null,
-    "relocation":null,
-    "payment_duration":"60",
-    "city":"Austin",
-    "state":"TX",
-    "country":"United States",
-    "country_code":null,
-    "zip_code":null,
-    "client_name":null,
-    "compensation":100000,
-    "finders_fee_amount":"4000.0",
-    "finders_fee":5.0,
-    "finders_fee_type":"percentage",
-    "hourly_rate":null,
-    "duration":null,
-    "duration_type":null,
-    "skills":"Java, Oracle",
-    "company": {
-      "short_description": "<p>Visa...</p>\r\n",
-      "long_description": "<p>s</p>\r\n",
-      "year_founded": "2013",
-      "logo": "https://jobhuk-staging.s3.amazonaws.com/uploads/company_images/company/image/23/Screen_Shot_2014-06-13_at_7.59.14_AM.png",
-      "company_type": null,
-      "id": 23,
-      "name": "Visa Inc11",
-      "address": "3500",
-      "website": "visa.com",
-      "phone": "(111) 111-1111",
-      "fax": null,
-      "city": "Austin",
-      "state": "Texas",
-      "zip": "78759",
-      "created_at": "2013-06-29T16:27:19-05:00",
-      "social_profile_links": null,
-      "email": null,
-      "about_team": "<p>s</p>\r\n",
-      "tag_line": "csssdsd",
-      "about_benefits": "<p>s</p>\r\n",
-      "verified": false
+    "successful": true,
+    "job": {
+        "id": 1318,
+        "title": "Ruby Programmer ",
+        "location": "Auxtin",
+        "description": "Ruby Programmer ",
+        "job_type": "FullTime",
+        "comp_range": 0,
+        "show_market_place": true,
+        "hide_salary": true,
+        "active": true,
+        "joining_date": null,
+        "travel_percentage": null,
+        "relocation": null,
+        "payment_duration": "60",
+        "city": "Austin",
+        "state": "TX",
+        "country": "United States",
+        "country_code": null,
+        "zip_code": null,
+        "client_name": null,
+        "compensation": 120000,
+        "finders_fee_amount": "8640.0",
+        "finders_fee": 9,
+        "finders_fee_type": "percentage",
+        "hourly_rate": null,
+        "duration": null,
+        "duration_type": null,
+        "skills": "ruby, rails, jquery, mysql",
+        "industry": {
+            "id": 181,
+            "name": "it industry"
+        },
+        "company": {
+            "short_description": "jobhukapi",
+            "long_description": "Jobhuk API is an austin based company",
+            "year_founded": "2010",
+            "logo": "https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1281/header_logo-1dc784d557ca8383748e986a661bd504.png",
+            "company_type": "employer",
+            "id": 1281,
+            "name": "jobhukapi test",
+            "address": "suite no 302",
+            "website": "www.jobhukapi.com",
+            "phone": "1234567890",
+            "fax": "0987654321",
+            "city": "Austin",
+            "state": "TX",
+            "zip": "78703",
+            "created_at": "2015-04-20T06:18:05-05:00",
+            "social_profile_links": null,
+            "email": "care@jobhukapi.com",
+            "about_team": "jobhukapi",
+            "tag_line": "jobhukapi",
+            "about_benefits": "jobhukapi",
+            "verified": false
+        }
     }
-  } 
 }
 ```
 
@@ -696,74 +714,78 @@ id<br>required | integer | unique job id
 ```ruby
 require 'httparty'
 
-response = HTTParty.put("http://jobhuk.com/api/v1/jobs/1117.json", {body: {job: {company_id: 297, title: 'Senior Software Engineer', description: 'This is a senior software engineer position to support the software development for field portable analytical instruments...', location: 'Austin, TX', job_type: 'FullTime', comp_range: 5, compensation: 100000, finders_fee_type: 'percentage', finders_fee: 5, skills: 'Java, Oracle', industry: 'engineering'}}, headers: {"Token" => API_TOKEN}})
+response = HTTParty.put("http://jobhuk.com/api/v1/jobs/1318.json", {body: {job: {company_id: 1281, title: 'Senior Software Engineer', description: 'This is a senior software engineer position to support the software development for field portable analytical instruments...', location: 'Austin, TX', job_type: 'FullTime', comp_range: 5, compensation: 100000, finders_fee_type: 'percentage', finders_fee: 5, skills: 'Java, Oracle', industry: 'engineering'}}, headers: {"Token" => API_TOKEN}})
 job = response.body
 ```
 
 ```shell
-curl http://jobhuk.com/api/v1/jobs/1117.json
+curl http://jobhuk.com/api/v1/jobs/1318.json
   -X PUT
   -H "Token: API_TOKEN"
-  --data "job[company_id]=297&job[title]=Senior Software Engineer&job[description]=This is a senior software engineer position to support the software development for field portable analytical instruments...&job[location]=Austin, TX&job[job_type]=FullTime&job[comp_range]=5&job[compensation]=100000&job[finders_fee_type]=percentage&job[finders_fee]=5&job[skills]=Java, Oracle&job[industry]=engineering"
+  --data "job[company_id]=1281&job[title]=Senior Software Engineer&job[description]=This is a senior software engineer position to support the software development for field portable analytical instruments...&job[location]=Austin, TX&job[job_type]=FullTime&job[comp_range]=5&job[compensation]=100000&job[finders_fee_type]=percentage&job[finders_fee]=5&job[skills]=Java, Oracle&job[industry]=engineering"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "successful":true,
-  "job": {
-    "id":1117,
-    "title":"Senior Software Engineer",
-    "location":"Austin, TX",
-    "description":"This is a senior software engineer position to support the software development for field portable analytical instruments...",
-    "job_type":"FullTime",
-    "comp_range":5,
-    "show_market_place":true,
-    "hide_salary":true,
-    "active":true,
-    "joining_date":null,
-    "travel_percentage":null,
-    "relocation":null,
-    "payment_duration":"60",
-    "city":"Austin",
-    "state":"TX",
-    "country":"United States",
-    "country_code":null,
-    "zip_code":null,
-    "client_name":null,
-    "compensation":100000,
-    "finders_fee_amount":"4000.0",
-    "finders_fee":5.0,
-    "finders_fee_type":"percentage",
-    "hourly_rate":null,
-    "duration":null,
-    "duration_type":null,
-    "skills":"Java, Oracle",
-    "company": {
-      "short_description": "<p>Visa...</p>\r\n",
-      "long_description": "<p>s</p>\r\n",
-      "year_founded": "2013",
-      "logo": "https://jobhuk-staging.s3.amazonaws.com/uploads/company_images/company/image/23/Screen_Shot_2014-06-13_at_7.59.14_AM.png",
-      "company_type": null,
-      "id": 23,
-      "name": "Visa Inc11",
-      "address": "3500",
-      "website": "visa.com",
-      "phone": "(111) 111-1111",
-      "fax": null,
-      "city": "Austin",
-      "state": "Texas",
-      "zip": "78759",
-      "created_at": "2013-06-29T16:27:19-05:00",
-      "social_profile_links": null,
-      "email": null,
-      "about_team": "<p>s</p>\r\n",
-      "tag_line": "csssdsd",
-      "about_benefits": "<p>s</p>\r\n",
-      "verified": false
+    "successful": true,
+    "job": {
+        "id": 1318,
+        "title": "Ruby Senior Programmer ",
+        "location": "Auxtin",
+        "description": "Ruby Programmer ",
+        "job_type": "FullTime",
+        "comp_range": 0,
+        "show_market_place": true,
+        "hide_salary": true,
+        "active": true,
+        "joining_date": null,
+        "travel_percentage": null,
+        "relocation": null,
+        "payment_duration": "60",
+        "city": "Austin",
+        "state": "TX",
+        "country": "United States",
+        "country_code": null,
+        "zip_code": null,
+        "client_name": null,
+        "compensation": 120000,
+        "finders_fee_amount": "8640.0",
+        "finders_fee": 9,
+        "finders_fee_type": "percentage",
+        "hourly_rate": null,
+        "duration": null,
+        "duration_type": null,
+        "skills": "Ruby,Rails,jQuery,MySql",
+        "industry": {
+            "id": 181,
+            "name": "it industry"
+        },
+        "company": {
+            "short_description": "jobhukapi",
+            "long_description": "Jobhuk API is an austin based company",
+            "year_founded": "2010",
+            "logo": "https://jobhuk.s3.amazonaws.com/uploads/company_images/company/image/1281/header_logo-1dc784d557ca8383748e986a661bd504.png",
+            "company_type": "employer",
+            "id": 1281,
+            "name": "jobhukapi test",
+            "address": "suite no 302",
+            "website": "www.jobhukapi.com",
+            "phone": "1234567890",
+            "fax": "0987654321",
+            "city": "Austin",
+            "state": "TX",
+            "zip": "78703",
+            "created_at": "2015-04-20T06:18:05-05:00",
+            "social_profile_links": null,
+            "email": "care@jobhukapi.com",
+            "about_team": "jobhukapi",
+            "tag_line": "jobhukapi",
+            "about_benefits": "jobhukapi",
+            "verified": false
+        }
     }
-  } 
 }
 ```
 
@@ -807,11 +829,11 @@ job[industry]<br>optional | string | job industry type
 ```ruby
 require 'httparty'
 
-response = HTTParty.delete("http://jobhuk.com/api/v1/jobs/1117.json", headers: {"Token" => "API_TOKEN"})
+response = HTTParty.delete("http://jobhuk.com/api/v1/jobs/1318.json", headers: {"Token" => "API_TOKEN"})
 ```
 
 ```shell
-curl http://jobhuk.com/api/v1/jobs/1117.json
+curl http://jobhuk.com/api/v1/jobs/1318.json
   -X DELETE
   -H "Token: API_TOKEN"
   
@@ -822,7 +844,7 @@ curl http://jobhuk.com/api/v1/jobs/1117.json
 ```json
 {
     "successful": true,
-    "job": "Deleted successfully 1117. This operation is irreversible."
+    "job": "Deleted successfully 1318. This operation is irreversible."
 }
 ```
 
@@ -845,12 +867,12 @@ id<br>required | integer | unique job id
 ```ruby
 require 'httparty'
 
-response = HTTParty.post("http://jobhuk.com/api/v1/jobs/1115/candidates", query: {candidate: {name: "john", email: "johnd@hatchforce.com", phone: 8558558359, public_profile_url: "https://www.linkedin.com/in/scottsantucci", :resume_file => File.new('/home/user/Downloads/josha_d.pdf')}},{headers:{"Token"=>"API_TOKEN"}})
+response = HTTParty.post("http://jobhuk.com/api/v1/jobs/1281/candidates", query: {candidate: {name: "john", email: "johnd@hatchforce.com", phone: 8558558359, public_profile_url: "https://www.linkedin.com/in/scottsantucci", :resume_file => File.new('/home/user/Downloads/josha_d.pdf')}},{headers:{"Token"=>"API_TOKEN"}})
 candidate = response.body
 ```
 
 ```shell
- curl "https/jobhuk.com/api/v1/jobs/1121/candidates"
+ curl "https/jobhuk.com/api/v1/jobs/1281/candidates"
    -X POST 
    -H "Token: API_TOKEN"
    -F "candidate[name]=john" 
@@ -864,73 +886,48 @@ candidate = response.body
 
 ```json
 {
-  "successful": true,
-  "success": "Resume submitted successfully",
-  "candidate": {
-    "submission": {
-        "candidate_action": null,
-        "contact_details": "name: john, Email: johnd@hatchforce.com",
-        "created_at": "2015-04-18T06:06:42-05:00",
-        "expire_at": null,
-        "id": 534,
-        "job_id": 1121,
-        "phone_number": "1234567890",
-        "public_profile_url": "https://www.linkedin.com/in/scottsantucci",
-        "referral_id": 812,
-        "submission_type": "resume",
-        "updated_at": "2015-04-18T06:06:42-05:00",
-        "user_id": 667
-    },
-    "referral": {
-        "admin_approved": null,
-        "another_source_discard": null,
-        "candidate": "johnd@hatchforce.com",
-        "candidate_action": null,
-        "candidate_rating": null,
-        "candidate_type": null,
-        "created_at": "2015-04-18T06:06:42-05:00",
-        "discard_feedback": null,
-        "discarded_by": null,
-        "expertise_in": null,
-        "hire_feedback": null,
-        "id": 812,
-        "job_id": 1115,
-        "match_score": null,
-        "matching_skills": null,
-        "notes": null,
-        "referral_rating": null,
-        "referral_type": "referral_submission",
-        "status": "submitted",
-        "tag": null,
-        "target_user_id": 667,
-        "token": "7b7283c4",
-        "updated_at": "2015-04-18T06:06:42-05:00",
-        "user_id": 640,
-        "verified": false
-    },
+    "successful": true,
+    "code": 200,
     "candidate": {
-        "account_type": "individual",
-        "active_company_id": null,
-        "balanced_customer_id": null,
-        "balanced_customer_uri": null,
-        "blocked": false,
-        "created_at": "2015-04-18T06:06:27-05:00",
-        "deleted_at": null,
-        "digest_frequency": 3,
-        "email": "johnd@hatchforce.com",
-        "facebook_auto_post": false,
-        "id": 667,
-        "job_alert_flag": null,
-        "job_alert_skill": null,
-        "job_new_alert": null,
-        "linkedin_auto_post": false,
-        "slug": "johnd",
-        "token": "932be4f1",
-        "twitter_auto_post": false,
-        "updated_at": "2015-04-18T06:06:40-05:00",
-        "vetted": false
+        "submission": {
+            "id": 3417,
+            "job_id": 1281,
+            "user_id": 7841,
+            "referral_id": 11563,
+            "submission_type": "resume",
+            "contact_details": "name: test, Email: test@hatchforce.com",
+            "phone_number": "7679873541",
+            "public_profile_url": "https://jobhuk.s3.amazonaws.com/assets/v3.0/header_logo-1dc784d557ca8383748e986a661bd504.png",
+            "created_at": "2015-04-20T07:19:11-05:00"
+        },
+        "referral": {
+            "id": 11563,
+            "referral_type": "referral_submission",
+            "target_user_id": 7841,
+            "another_source_discard": null,
+            "admin_approved": null,
+            "verified": false,
+            "created_at": "2015-04-20T07:19:11-05:00"
+        },
+        "user": {
+            "id": 7841,
+            "email": "test@hatchforce.com",
+            "account_type": "individual"
+        },
+        "profile": {
+            "id": 7773,
+            "first_name": "test",
+            "middle_name": null,
+            "last_name": " ",
+            "social_picture": null,
+            "public_profile_url": null
+        },
+        "profile_image": "",
+        "profile_page": "https://jobhuk.com/me/test6",
+        "resume": {
+            "resume_file": "https://jobhuk.s3.amazonaws.com/uploads/resume/resume/resume_file/3371/test_resume.doc"
+        }
     }
-  }
 }
 ```
 
@@ -948,7 +945,7 @@ job_id<br>required | integer | unique job id
 candidate[name]<br>required | string | Name of the candidate
 candidate[email]<br>required | string | Email of the candidate
 candidate[phone]<br>required | integer | Phone number of the candidate
-candidate[resume_file]<br>required | string | candidate resume file
+candidate[resume_file]<br>required | string | candidate resume file must be pdf or doc
 candidate[public_profile_url]<br>required | string | candidate's linkedin or facebook profile urls
 
 ## All Candidates
@@ -1026,12 +1023,12 @@ job_id<br>required | integer | unique job id
 ```ruby
 require 'httparty'
 
-response = HTTParty.get("http://jobhuk.com/api/v1/jobs/1115/submitted_candidates", headers: {"Token" => "API_TOKEN"})
+response = HTTParty.get("http://jobhuk.com/api/v1/jobs/1281/submitted_candidates", headers: {"Token" => "API_TOKEN"})
 candidates = response.body
 ```
 
 ```shell
-curl http://jobhuk.com/api/v1/jobs/1115/submitted_candidates 
+curl http://jobhuk.com/api/v1/jobs/1281/submitted_candidates 
   -H "Token:API_TOKEN"
 ```
 
@@ -1039,44 +1036,90 @@ curl http://jobhuk.com/api/v1/jobs/1115/submitted_candidates
 
 ```json
 {
-  "successful": true,
-  "submitted_users": [{
-    "submission_id": 533,
-    "job_id": 1115,
-    "candidate": {
-        "name": "John",
-        "profile_image": "https://jobhuk.com/assets/profile.jpeg",
-        "profile_page": "http://jobhuk.com/me/johnd"
-    },
-    "referral_status": "submitted",
-    "discard_feedback": 0,
-    "candidate_rating": 0,
-    "referral_rating": 0,
-    "hire_feedback": 0,
-    "resume": "https://jobhuk-staging.s3.amazonaws.com/uploads/resume/resume/resume_file/414/Sr__ROR_Developer.docx",
-    "interview_details": {},
-    "conversations_count": 0,
-    "verified": false,
-    "discarded_by": " "
-  }, {
-    "submission_id": 521,
-    "job_id": 1115,
-    "candidate": {
-        "name": "Alex",
-        "profile_image": "https://jobhuk.com/assets/profile.jpeg",
-        "profile_page": "http://jobhuk.com/me/alexd"
-    },
-    "referral_status": "submitted",
-    "discard_feedback": 0,
-    "candidate_rating": 2,
-    "referral_rating": 3,
-    "hire_feedback": 0,
-    "resume": "https://jobhuk-staging.s3.amazonaws.com/uploads/resume/resume/resume_file/402/Sr__ROR_Developer.docx",
-    "interview_details": {},
-    "conversations_count": 0,
-    "verified": false,
-    "discarded_by": " "
-  }]
+    "successful": true,
+    "count": 4,
+    "candidates": [
+        {
+            "submission": {
+                "id": 3417,
+                "job_id": 1281,
+                "user_id": 7841,
+                "referral_id": 11563,
+                "submission_type": "resume",
+                "contact_details": "name: test, Email: test@hatchforce.com",
+                "phone_number": "7679873541",
+                "public_profile_url": "https://jobhuk.s3.amazonaws.com/assets/v3.0/header_logo-1dc784d557ca8383748e986a661bd504.png",
+                "created_at": "2015-04-20T07:19:11-05:00"
+            },
+            "referral": {
+                "id": 11563,
+                "referral_type": "referral_submission",
+                "target_user_id": 7841,
+                "another_source_discard": null,
+                "admin_approved": null,
+                "verified": false,
+                "created_at": "2015-04-20T07:19:11-05:00"
+            },
+            "user": {
+                "id": 7841,
+                "email": "test@hatchforce.com",
+                "account_type": "individual"
+            },
+            "profile": {
+                "id": 7773,
+                "first_name": "test",
+                "middle_name": null,
+                "last_name": " ",
+                "social_picture": null,
+                "public_profile_url": null
+            },
+            "profile_image": "",
+            "profile_page": "https://jobhuk.com/me/test6",
+            "resume": {
+                "resume_file": "https://jobhuk.s3.amazonaws.com/uploads/resume/resume/resume_file/3371/test_resume.doc"
+            }
+        },
+        {
+            "submission": {
+                "id": 3415,
+                "job_id": 1281,
+                "user_id": 7839,
+                "referral_id": 11561,
+                "submission_type": "resume",
+                "contact_details": "name: venky1, Email: venkykvs@hatchforce.com",
+                "phone_number": "6679873541",
+                "public_profile_url": "https://jobhuk.s3.amazonaws.com/assets/v3.0/header_logo-1dc784d557ca8383748e986a661bd504.png",
+                "created_at": "2015-04-20T07:18:17-05:00"
+            },
+            "referral": {
+                "id": 11561,
+                "referral_type": "referral_submission",
+                "target_user_id": 7839,
+                "another_source_discard": null,
+                "admin_approved": null,
+                "verified": false,
+                "created_at": "2015-04-20T07:18:17-05:00"
+            },
+            "user": {
+                "id": 7839,
+                "email": "venkykvs@hatchforce.com",
+                "account_type": "individual"
+            },
+            "profile": {
+                "id": 7771,
+                "first_name": "venky1",
+                "middle_name": null,
+                "last_name": " ",
+                "social_picture": null,
+                "public_profile_url": null
+            },
+            "profile_image": "",
+            "profile_page": "https://jobhuk.com/me/venkykvs",
+            "resume": {
+                "resume_file": "https://jobhuk.s3.amazonaws.com/uploads/resume/resume/resume_file/3369/venky.doc"
+            }
+        }
+    ]
 }
 ```
 
@@ -1232,21 +1275,89 @@ curl http://jobhuk.com/api/v1/industries
         {
             "id": 59,
             "name": "Human Resources"
-        },          
+        },
         {
-            "id": 175,
+            "id": 124,
+            "name": "Research"
+        },
+        {
+            "id": 149,
+            "name": "Software Development"
+        },
+        {
+            "id": 191,
+            "name": "Finance"
+        },
+        {
+            "id": 204,
+            "name": "Administrative"
+        },
+        {
+            "id": 205,
+            "name": "Information Technology"
+        },
+        {
+            "id": 206,
+            "name": "Advertising"
+        },
+        {
+            "id": 207,
+            "name": "Legal"
+        },
+        {
+            "id": 208,
+            "name": "Business Development"
+        },
+        {
+            "id": 209,
+            "name": "Marketing"
+        },
+        {
+            "id": 210,
+            "name": "Client Services"
+        },
+        {
+            "id": 211,
+            "name": "Computers/Hardware"
+        },
+        {
+            "id": 212,
+            "name": "Product/Creative"
+        },
+        {
+            "id": 213,
+            "name": "Computers/Software"
+        },
+        {
+            "id": 214,
             "name": "Product Management"
         },
         {
-            "id": 176,
+            "id": 215,
             "name": "Customer Service"
         },
         {
-            "id": 177,
+            "id": 216,
             "name": "Quality Assurance"
-        },         
+        },
         {
-            "id": 184,
+            "id": 217,
+            "name": "Engineering"
+        },
+        {
+            "id": 218,
+            "name": "Executive Management"
+        },
+        {
+            "id": 219,
+            "name": "Sales"
+        },
+        {
+            "id": 220,
+            "name": "Technical Support"
+        },
+        {
+            "id": 221,
             "name": "Other"
         }
     ]
