@@ -417,12 +417,12 @@ This endpoint gets all jobs posted in jobhuk.
 ```ruby
 require 'httparty'
 
-response = HTTParty.get("http://jobhuk.com/api/v1/jobs.json", headers: {"Token" => "API_TOKEN"})
+response = HTTParty.get("http://jobhuk.com/api/v1/my_jobs.json", headers: {"Token" => "API_TOKEN"})
 jobs = response.body
 ```
 
 ```shell
-curl http://jobhuk.com/api/v1/jobs.json
+curl http://jobhuk.com/api/v1/my_jobs.json
   -H "Token: API_TOKEN"
 ```
 
@@ -509,12 +509,12 @@ This endpoint get list of jobs approved by jobhuk admin and posted by you in job
 ```ruby
 require 'httparty'
 
-response = HTTParty.post("http://jobhuk.com/api/v1/my_jobs.json", {body: {job: {company_id: 297, title: 'Senior Software Engineer', description: 'This is a senior software engineer position to support the software development for field portable analytical instruments...', location: 'Austin, TX', job_type: 'FullTime', comp_range: 5, compensation: 100000, finders_fee_type: 'percentage', finders_fee: 5, skills: 'Java, Oracle', industry: 'engineering'}}, headers: {"Token" => API_TOKEN}})
+response = HTTParty.post("http://jobhuk.com/api/v1/jobs.json.json", {body: {job: {company_id: 297, title: 'Senior Software Engineer', description: 'This is a senior software engineer position to support the software development for field portable analytical instruments...', location: 'Austin, TX', job_type: 'FullTime', comp_range: 5, compensation: 100000, finders_fee_type: 'percentage', finders_fee: 5, skills: 'Java, Oracle', industry: 'engineering'}}, headers: {"Token" => API_TOKEN}})
 job = response.body
 ```
 
 ```shell
-curl http://jobhuk.com/api/v1/my_jobs.json
+curl http://jobhuk.com/api/v1/jobs.json
   -X POST
   -H "Token: API_TOKEN"
   --data "job[company_id]=297&job[title]=Senior Software Engineer&job[description]=This is a senior software engineer position to support the software development for field portable analytical instruments...&job[location]=Austin, TX&job[job_type]=FullTime&job[comp_range]=5&job[compensation]=100000&job[finders_fee_type]=percentage&job[finders_fee]=5&job[skills]=Java, Oracle&job[industry]=engineering"
