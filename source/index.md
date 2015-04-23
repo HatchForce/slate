@@ -27,12 +27,12 @@ We have language bindings in Shell and Ruby! You can view code examples in the d
 ```ruby
 require 'httparty'
 
-response = HTTParty.get('http://jobhuk.com/api/v1/companies.json', headers: {"Token" => "API_TOKEN"})
+response = HTTParty.get('http://api.jobhuk.com/companies.json', headers: {"Token" => "API_TOKEN"})
 companies = response.body
 ```
 
 ```shell
-curl "http://jobhuk.com/api/v1/companies.json"
+curl "http://api.jobhuk.com/companies.json"
   -H "Token: API_TOKEN"  
 ```
 
@@ -43,6 +43,8 @@ Jobhuk uses API keys to allow access to the API. [Get API TOKEN](http://develope
 Jobhuk expects for the API_TOKEN to be included in all API requests to the server in a header that looks like the following:
 
 `Token: API_TOKEN`
+
+`ACCEPT: application/vnd.jobhuk.v1`
 
 <aside class="notice">
 You must replace `API_TOKEN` with your personal API key.
@@ -55,12 +57,12 @@ You must replace `API_TOKEN` with your personal API key.
 ```ruby
 require 'httparty'
 
-response = HTTParty.get('http://jobhuk.com/api/v1/companies.json', headers: {"Token" => "API_TOKEN"})
+response = HTTParty.get('http://api.jobhuk.com/companies.json', headers: {"Token" => "API_TOKEN"})
 companies = response.body
 ```
 
 ```shell
-curl "http://jobhuk.com/api/v1/companies.json"
+curl "http://api.jobhuk.com/companies.json"
   -H "Token: API_TOKEN"  
 ```
 
@@ -108,19 +110,19 @@ This endpoint retrieves list of companies created by you.
 
 ### HTTP Request
 
-`GET http://jobhuk.com/api/v1/companies`
+`GET http://api.jobhuk.com/companies`
 
 ## Create Company
 
 ```ruby
 require 'httparty'
 
-response = HTTParty.post("http://jobhuk.com/api/v1/companies.json", { body: {company: {name: "jobhuk", website: "http://jobhuk.com", phone: 8558558359, company_type: "staffing"}}, headers: {"Token" => "API_TOKEN"} })
+response = HTTParty.post("http://api.jobhuk.com/companies.json", { body: {company: {name: "jobhuk", website: "http://jobhuk.com", phone: 8558558359, company_type: "staffing"}}, headers: {"Token" => "API_TOKEN"} })
 company = response.body
 ```
 
 ```shell
-curl "http://jobhuk.com/api/v1/companies.json"
+curl "http://api.jobhuk.com/companies.json"
   -X POST 
   -H "Token:TW6SV34JL+M/WaVMY0tytrII2PJ1xAjSkV73qq2Gmzgv+8q0zSeIhijCLVSc9eSEb9jjuug/8ZtucVSacMFgeA=="
   --data "company[name]=test110&company[website]=test110.com&company[phone]=1234567890" 
@@ -158,7 +160,7 @@ This endpoint creates a company in jobhuk.
 
 ### HTTP Request
 
-`POST http://jobhuk.com/api/v1/companies.json`
+`POST http://api.jobhuk.com/companies.json`
 
 ### POST Parameters
 
@@ -188,12 +190,12 @@ company[about_benefits]<br>optional | string | information about company benefit
 ```ruby
 require 'httparty'
 
-response = HTTParty.get('http://jobhuk.com/api/v1/companies/1281.json', headers: {"Token" => "API_TOKEN"})
+response = HTTParty.get('http://api.jobhuk.com/companies/1281.json', headers: {"Token" => "API_TOKEN"})
 companies = response.body
 ```
 
 ```shell
-curl "http://jobhuk.com/api/v1/companies/1281.json"
+curl "http://api.jobhuk.com/companies/1281.json"
   -H "Token: API_TOKEN"
 ```
 
@@ -232,7 +234,7 @@ This endpoint retrieves a specific company information.
 
 ### HTTP Request
 
-`GET http://jobhuk.com/api/v1/companies/<id>.json`
+`GET http://api.jobhuk.com/companies/<id>.json`
 
 ### URL Parameters
 
@@ -245,12 +247,12 @@ id | integer | The id of the company to retrieve
 ```ruby
 require 'httparty'
 
-response = HTTParty.put("http://jobhuk.com/api/v1/companies/1281.json", { body: {company: {name: "jobhuk", website: "http://jobhuk.com", phone: 8558558359, company_type: "staffing"}}, headers: {"Token" => "API_TOKEN"} })
+response = HTTParty.put("http://api.jobhuk.com/companies/1281.json", { body: {company: {name: "jobhuk", website: "http://jobhuk.com", phone: 8558558359, company_type: "staffing"}}, headers: {"Token" => "API_TOKEN"} })
 company = response.body
 ```
 
 ```shell
-curl "http://jobhuk.com/api/v1/companies/1281.json"
+curl "http://api.jobhuk.com/companies/1281.json"
   -X POST 
   -H "Token:TW6SV34JL+M/WaVMY0tytrII2PJ1xAjSkV73qq2Gmzgv+8q0zSeIhijCLVSc9eSEb9jjuug/8ZtucVSacMFgeA=="
   --data "company[name]=test110&company[website]=test110.com&company[phone]=1234567890" 
@@ -292,7 +294,7 @@ This endpoint updates specific company information given by id.
 
 ### HTTP Request
 
-`PUT http://jobhuk.com/api/v1/companies/<id>.json`
+`PUT http://api.jobhuk.com/companies/<id>.json`
 
 ### POST Parameters
 
@@ -325,12 +327,12 @@ company[about_benefits]<br>optional | string | information about company benefit
 ```ruby
 require 'httparty'
 
-response = HTTParty.get("http://jobhuk.com/api/v1/jobs.json", headers: {"Token" => "API_TOKEN"})
+response = HTTParty.get("http://api.jobhuk.com/jobs.json", headers: {"Token" => "API_TOKEN"})
 jobs = response.body
 ```
 
 ```shell
-curl http://jobhuk.com/api/v1/jobs.json
+curl http://api.jobhuk.com/jobs.json
   -H "Token: API_TOKEN"
 ```
 
@@ -410,19 +412,19 @@ This endpoint gets all jobs posted in jobhuk.
 
 ### HTTP Request
 
-`GET http://jobhuk.com/api/v1/jobs.json`
+`GET http://api.jobhuk.com/jobs.json`
 
 ## My Jobs
 
 ```ruby
 require 'httparty'
 
-response = HTTParty.get("http://jobhuk.com/api/v1/my_jobs.json", headers: {"Token" => "API_TOKEN"})
+response = HTTParty.get("http://api.jobhuk.com/my_jobs.json", headers: {"Token" => "API_TOKEN"})
 jobs = response.body
 ```
 
 ```shell
-curl http://jobhuk.com/api/v1/my_jobs.json
+curl http://api.jobhuk.com/my_jobs.json
   -H "Token: API_TOKEN"
 ```
 
@@ -502,19 +504,19 @@ This endpoint get list of jobs approved by jobhuk admin and posted by you in job
 
 ### HTTP Request
 
-`GET http://jobhuk.com/api/v1/my_jobs.json`
+`GET http://api.jobhuk.com/my_jobs.json`
 
 ## Create Job
 
 ```ruby
 require 'httparty'
 
-response = HTTParty.post("http://jobhuk.com/api/v1/jobs.json.json", {body: {job: {company_id: 297, title: 'Senior Software Engineer', description: 'This is a senior software engineer position to support the software development for field portable analytical instruments...', location: 'Austin, TX', job_type: 'FullTime', comp_range: 5, compensation: 100000, finders_fee_type: 'percentage', finders_fee: 5, skills: 'Java, Oracle', industry: 'engineering'}}, headers: {"Token" => API_TOKEN}})
+response = HTTParty.post("http://api.jobhuk.com/jobs.json.json", {body: {job: {company_id: 297, title: 'Senior Software Engineer', description: 'This is a senior software engineer position to support the software development for field portable analytical instruments...', location: 'Austin, TX', job_type: 'FullTime', comp_range: 5, compensation: 100000, finders_fee_type: 'percentage', finders_fee: 5, skills: 'Java, Oracle', industry: 'engineering'}}, headers: {"Token" => API_TOKEN}})
 job = response.body
 ```
 
 ```shell
-curl http://jobhuk.com/api/v1/jobs.json
+curl http://api.jobhuk.com/jobs.json
   -X POST
   -H "Token: API_TOKEN"
   --data "job[company_id]=297&job[title]=Senior Software Engineer&job[description]=This is a senior software engineer position to support the software development for field portable analytical instruments...&job[location]=Austin, TX&job[job_type]=FullTime&job[comp_range]=5&job[compensation]=100000&job[finders_fee_type]=percentage&job[finders_fee]=5&job[skills]=Java, Oracle&job[industry]=engineering"
@@ -589,7 +591,7 @@ This endpoint post a job in jobhuk.
 
 ### HTTP Request
 
-`POST http://jobhuk.com/api/v1/jobs.json`
+`POST http://api.jobhuk.com/jobs.json`
 
 ### POST Parameters
 
@@ -624,12 +626,12 @@ job[industry]<br>optional | string | job industry type
 ```ruby
 require 'httparty'
 
-response = HTTParty.get("http://jobhuk.com/api/v1/jobs/1318.json", headers: {"Token" => "API_TOKEN"})
+response = HTTParty.get("http://api.jobhuk.com/jobs/1318.json", headers: {"Token" => "API_TOKEN"})
 job = response.body
 ```
 
 ```shell
-curl http://jobhuk.com/api/v1/jobs/1318.json
+curl http://api.jobhuk.com/jobs/1318.json
   -H "Token:API_TOKEN"
 ```
 
@@ -701,7 +703,7 @@ This endpoint get a specific job details given by id
 
 ### HTTP Request
 
-`GET http://jobhuk.com/api/v1/jobs/<id>.json`
+`GET http://api.jobhuk.com/jobs/<id>.json`
 
 ### URL Parameters
 
@@ -714,12 +716,12 @@ id<br>required | integer | unique job id
 ```ruby
 require 'httparty'
 
-response = HTTParty.put("http://jobhuk.com/api/v1/jobs/1318.json", {body: {job: {company_id: 1281, title: 'Senior Software Engineer', description: 'This is a senior software engineer position to support the software development for field portable analytical instruments...', location: 'Austin, TX', job_type: 'FullTime', comp_range: 5, compensation: 100000, finders_fee_type: 'percentage', finders_fee: 5, skills: 'Java, Oracle', industry: 'engineering'}}, headers: {"Token" => API_TOKEN}})
+response = HTTParty.put("http://api.jobhuk.com/jobs/1318.json", {body: {job: {company_id: 1281, title: 'Senior Software Engineer', description: 'This is a senior software engineer position to support the software development for field portable analytical instruments...', location: 'Austin, TX', job_type: 'FullTime', comp_range: 5, compensation: 100000, finders_fee_type: 'percentage', finders_fee: 5, skills: 'Java, Oracle', industry: 'engineering'}}, headers: {"Token" => API_TOKEN}})
 job = response.body
 ```
 
 ```shell
-curl http://jobhuk.com/api/v1/jobs/1318.json
+curl http://api.jobhuk.com/jobs/1318.json
   -X PUT
   -H "Token: API_TOKEN"
   --data "job[company_id]=1281&job[title]=Senior Software Engineer&job[description]=This is a senior software engineer position to support the software development for field portable analytical instruments...&job[location]=Austin, TX&job[job_type]=FullTime&job[comp_range]=5&job[compensation]=100000&job[finders_fee_type]=percentage&job[finders_fee]=5&job[skills]=Java, Oracle&job[industry]=engineering"
@@ -793,7 +795,7 @@ This endpoint edit specific job details given by id
 
 ### HTTP Request
 
-`PUT http://jobhuk.com/api/v1/jobs/<id>.json`
+`PUT http://api.jobhuk.com/jobs/<id>.json`
 
 ### POST Parameters
 
@@ -829,11 +831,11 @@ job[industry]<br>optional | string | job industry type
 ```ruby
 require 'httparty'
 
-response = HTTParty.delete("http://jobhuk.com/api/v1/jobs/1318.json", headers: {"Token" => "API_TOKEN"})
+response = HTTParty.delete("http://api.jobhuk.com/jobs/1318.json", headers: {"Token" => "API_TOKEN"})
 ```
 
 ```shell
-curl http://jobhuk.com/api/v1/jobs/1318.json
+curl http://api.jobhuk.com/jobs/1318.json
   -X DELETE
   -H "Token: API_TOKEN"
   
@@ -853,7 +855,7 @@ This operation is irreversible.
 
 ### HTTP Request
 
-`DELETE http://jobhuk.com/api/v1/jobs/<id>.json`
+`DELETE http://api.jobhuk.com/jobs/<id>.json`
 
 ### URL Parameters
 
@@ -867,12 +869,12 @@ id<br>required | integer | unique job id
 ```ruby
 require 'httparty'
 
-response = HTTParty.post("http://jobhuk.com/api/v1/jobs/1281/candidates", query: {candidate: {name: "john", email: "johnd@hatchforce.com", phone: 8558558359, public_profile_url: "https://www.linkedin.com/in/scottsantucci", :resume_file => File.new('/home/user/Downloads/josha_d.pdf')}},{headers:{"Token"=>"API_TOKEN"}})
+response = HTTParty.post("http://api.jobhuk.com/jobs/1281/candidates", query: {candidate: {name: "john", email: "johnd@hatchforce.com", phone: 8558558359, public_profile_url: "https://www.linkedin.com/in/scottsantucci", :resume_file => File.new('/home/user/Downloads/josha_d.pdf')}},{headers:{"Token"=>"API_TOKEN"}})
 candidate = response.body
 ```
 
 ```shell
- curl "https/jobhuk.com/api/v1/jobs/1281/candidates"
+ curl "http://api.jobhuk.com/jobs/1281/candidates"
    -X POST 
    -H "Token: API_TOKEN"
    -F "candidate[name]=john" 
@@ -935,7 +937,7 @@ This endpoint submit's candidate to specific job.
 
 ### HTTP Request
 
-`POST http://jobhuk.com/api/v1/jobs/<job_id>/candidates`
+`POST http://api.jobhuk.com/jobs/<job_id>/candidates`
 
 ### POST Parameters
 
@@ -952,12 +954,12 @@ candidate[public_profile_url]<br>required | string | candidate's linkedin or fac
 ```ruby
 require 'httparty'
 
-response = HTTParty.get("http://jobhuk.com/api/v1/jobs/1281/candidates", headers: {"Token" => "API_TOKEN"})
+response = HTTParty.get("http://api.jobhuk.com/jobs/1281/candidates", headers: {"Token" => "API_TOKEN"})
 candidates = response.body
 ```
 
 ```shell
-curl http://jobhuk.com/api/v1/jobs/1281/candidates 
+curl http://api.jobhuk.com/jobs/1281/candidates 
   -H "Token:API_TOKEN"
 ```
 
@@ -1056,7 +1058,7 @@ This endpoint returns all candidates for this job.
 
 ### HTTP Request
 
-`GET http://jobhuk.com/api/v1/jobs/<job_id>/candidates`
+`GET http://api.jobhuk.com/jobs/<job_id>/candidates`
 
 ### URL Parameters
 
@@ -1069,12 +1071,12 @@ job_id<br>required | integer | unique job id
 ```ruby
 require 'httparty'
 
-response = HTTParty.get("http://jobhuk.com/api/v1/jobs/1281/submitted_candidates", headers: {"Token" => "API_TOKEN"})
+response = HTTParty.get("http://api.jobhuk.com/jobs/1281/submitted_candidates", headers: {"Token" => "API_TOKEN"})
 candidates = response.body
 ```
 
 ```shell
-curl http://jobhuk.com/api/v1/jobs/1281/submitted_candidates 
+curl http://api.jobhuk.com/jobs/1281/submitted_candidates 
   -H "Token:API_TOKEN"
 ```
 
@@ -1173,7 +1175,7 @@ This endpoint returns specific candidates submitted to job by you as a recruiter
 
 ### HTTP Request
 
-`GET http://jobhuk.com/api/v1/jobs/<job_id>/submitted_candidates`
+`GET http://api.jobhuk.com/jobs/<job_id>/submitted_candidates`
 
 ### URL Parameters
 
@@ -1187,12 +1189,12 @@ job_id<br>required | integer | unique job id
 ```ruby
 require 'httparty'
 
-response = HTTParty.get("http://jobhuk.com/api/v1/jobs/1281/candidates/3417", headers: {"Token" => "API_TOKEN"})
+response = HTTParty.get("http://api.jobhuk.com/jobs/1281/candidates/3417", headers: {"Token" => "API_TOKEN"})
 candidates = response.body
 ```
 
 ```shell
-curl http://jobhuk.com/api/v1/jobs/1281/candidates/3417 
+curl http://api.jobhuk.com/jobs/1281/candidates/3417 
   -H "Token:API_TOKEN"
 ```
 
@@ -1249,7 +1251,7 @@ This endpoint returns submitted candidate details to specific job
 
 ### HTTP Request
 
-`GET http://jobhuk.com/api/v1/jobs/<job_id>/candidates/<id>`
+`GET http://api.jobhuk.com/jobs/<job_id>/candidates/<id>`
 
 ### URL Parameters
 
@@ -1265,12 +1267,12 @@ id<br>required | integer | unique candidate id
 ```ruby
 require 'httparty'
 
-response = HTTParty.get("http://jobhuk.com/api/v1/industries", headers: {"Token" => "API_TOKEN"})
+response = HTTParty.get("http://api.jobhuk.com/industries", headers: {"Token" => "API_TOKEN"})
 candidates = response.body
 ```
 
 ```shell
-curl http://jobhuk.com/api/v1/industries 
+curl http://api.jobhuk.com/industries 
   -H "Token:API_TOKEN"
 ```
 
@@ -1376,6 +1378,6 @@ This endpoint returns list of industries
 
 ### HTTP Request
 
-`GET http://jobhuk.com/api/v1/industries`
+`GET http://api.jobhuk.com/industries`
 
 
